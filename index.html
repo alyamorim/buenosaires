@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buenos Aires — Roteiro 26–31/08</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --ink: #1A1714;
+  --rust: #B84B2A;
+  --sage: #4A6741;
+  --gold: #C49A3C;
+  --dust: #8C7E6E;
+  --paper: #EDE7D9;
+  --light: #FAF7F2;
+  --border: rgba(26,23,20,0.12);
+  --card-bg: rgba(255,255,255,0.7);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2.5rem 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--rust);
+  opacity: 0.15;
+}
+.header-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+.header-title em { font-style: italic; color: var(--gold); }
+.header-sub {
+  font-size: 13px;
+  color: rgba(245,240,232,0.6);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.header-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.meta-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(245,240,232,0.1);
+  color: var(--cream);
+  border: 1px solid rgba(245,240,232,0.2);
+}
+
+/* ── NAV DIAS ── */
+.days-nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.days-nav::-webkit-scrollbar { display: none; }
+.days-nav-inner {
+  display: inline-flex;
+  gap: 0;
+  min-width: 100%;
+}
+.day-tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--dust);
+  flex-shrink: 0;
+}
+.day-tab:hover { color: var(--ink); }
+.day-tab.active {
+  color: var(--rust);
+  border-bottom-color: var(--rust);
+}
+.day-tab-weekday {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.day-tab-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.day-tab-label {
+  font-size: 10px;
+  font-weight: 300;
+  margin-top: 1px;
+  max-width: 70px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* ── MAIN ── */
+.main { max-width: 680px; margin: 0 auto; }
+
+/* ── DAY SECTION ── */
+.day-section {
+  display: none;
+  padding: 1.5rem 1rem 3rem;
+  animation: fadeIn 0.3s ease;
+}
+.day-section.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.day-header-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.day-date {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 0.25rem;
+}
+.day-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+.day-tagline {
+  font-size: 13px;
+  color: var(--dust);
+  font-weight: 300;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.tl-item { position: relative; padding-left: 40px; margin-bottom: 0.75rem; }
+
+.tl-dot {
+  position: absolute;
+  left: 7px; top: 18px;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid var(--border);
+  z-index: 1;
+}
+.tl-dot.food    { border-color: var(--sage);  background: #E8F0E7; }
+.tl-dot.culture { border-color: #5B7FB5;      background: #EBF0F8; }
+.tl-dot.transit { border-color: var(--dust);  background: var(--cream); }
+.tl-dot.night   { border-color: var(--rust);  background: #F5EAE6; }
+.tl-dot.free    { border-color: var(--gold);  background: #F8F1E0; }
+
+/* TRANSIT */
+.tl-transit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--paper);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--dust);
+  margin: 0.25rem 0;
+}
+.tl-transit-icon { font-size: 14px; flex-shrink: 0; }
+.tl-transit-desc { flex: 1; }
+.tl-transit-time { font-weight: 500; color: var(--ink); white-space: nowrap; }
+
+/* CARD */
+.tl-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+.card-header {
+  padding: 0.9rem 1rem 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.card-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dust);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  flex: 1;
+}
+.card-addr {
+  font-size: 12px;
+  color: var(--dust);
+  padding: 0.15rem 1rem 0;
+}
+.card-body {
+  padding: 0.5rem 1rem 0.85rem;
+  font-size: 13.5px;
+  color: #3A3530;
+  line-height: 1.65;
+}
+
+/* TAGS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 1rem 0.85rem;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+.tag-teal   { background: #E1F5EE; color: #085041; }
+.tag-blue   { background: #E6F0FA; color: #1A4A7A; }
+.tag-amber  { background: #FDF0D8; color: #7A4A08; }
+.tag-coral  { background: #FAECE7; color: #7A2A10; }
+.tag-gray   { background: #F0EDE8; color: #4A4540; }
+.tag-sage   { background: #E8F0E7; color: #2A5025; }
+
+/* RESERVA BADGE */
+.reserva-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--rust);
+  padding: 0.4rem 1rem 0.6rem;
+  border-top: 1px solid var(--border);
+}
+.reserva-badge a {
+  color: var(--rust);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+/* ALTERNATIVAS */
+.alt-block {
+  margin: 0 1rem 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: #F8F4EC;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  font-size: 12.5px;
+  color: #5A4E3E;
+}
+.alt-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+/* NOTA */
+.nota-block {
+  margin: 0 1rem 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: #EEF4EE;
+  border-left: 3px solid var(--sage);
+  border-radius: 0 8px 8px 0;
+  font-size: 12.5px;
+  color: #2A4028;
+  font-style: italic;
+}
+
+/* SECTION LABEL */
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dust);
+  padding: 1rem 0 0.5rem;
+}
+
+/* RESUMO DIA */
+.day-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--ink);
+  border-radius: 12px;
+  color: var(--cream);
+}
+.sum-item { }
+.sum-label { font-size: 10px; color: rgba(245,240,232,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+.sum-value { font-size: 13px; font-weight: 500; }
+
+/* CARDAPIO OPTIONS */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem 0.85rem;
+}
+.option-card {
+  padding: 0.65rem 0.85rem;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+}
+.option-letter {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--dust);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.option-name { font-weight: 500; margin-bottom: 2px; }
+.option-addr { font-size: 11.5px; color: var(--dust); margin-bottom: 4px; }
+.option-desc { font-size: 12px; color: #4A4540; line-height: 1.5; }
+
+/* LEGEND */
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  background: var(--paper);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--dust);
+}
+.leg-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+/* PHONE LINK */
+a.tel { color: inherit; text-decoration: none; font-weight: 500; }
+a.tel:hover { text-decoration: underline; }
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .site-header { padding: 2rem 1rem 1.5rem; }
+  .day-section { padding: 1rem 0.75rem 3rem; }
+  .tl-item { padding-left: 34px; }
+  .day-summary { grid-template-columns: 1fr 1fr; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-eyebrow">Roteiro de viagem</div>
+  <h1 class="header-title">Buenos <em>Aires</em></h1>
+  <p class="header-sub">26 de agosto — 31 de agosto de 2025 · Casal · AirBnb em Palermo</p>
+  <div class="header-meta">
+    <span class="meta-pill">5 dias</span>
+    <span class="meta-pill">Aeroparque</span>
+    <span class="meta-pill">Palermo · Recoleta · Centro · San Telmo</span>
+  </div>
+</header>
+
+<nav class="days-nav" id="daysNav">
+  <div class="days-nav-inner">
+    <a class="day-tab active" onclick="showDay('qua', this)" href="#">
+      <span class="day-tab-weekday">Qua</span>
+      <span class="day-tab-num">26</span>
+      <span class="day-tab-label">Chegada</span>
+    </a>
+    <a class="day-tab" onclick="showDay('qui', this)" href="#">
+      <span class="day-tab-weekday">Qui</span>
+      <span class="day-tab-num">27</span>
+      <span class="day-tab-label">Recoleta</span>
+    </a>
+    <a class="day-tab" onclick="showDay('sex', this)" href="#">
+      <span class="day-tab-weekday">Sex</span>
+      <span class="day-tab-num">28</span>
+      <span class="day-tab-label">Palermo</span>
+    </a>
+    <a class="day-tab" onclick="showDay('sab', this)" href="#">
+      <span class="day-tab-weekday">Sáb</span>
+      <span class="day-tab-num">29</span>
+      <span class="day-tab-label">Centro · PM</span>
+    </a>
+    <a class="day-tab" onclick="showDay('dom', this)" href="#">
+      <span class="day-tab-weekday">Dom</span>
+      <span class="day-tab-num">31</span>
+      <span class="day-tab-label">San Telmo</span>
+    </a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════ QUARTA ══════════════ -->
+<section class="day-section active" id="day-qua">
+  <div class="day-header-block">
+    <div class="day-date">Quarta-feira · 26 de agosto</div>
+    <h2 class="day-title">Chegada</h2>
+    <p class="day-tagline">Roteiro leve · Palermo · Sem agenda rígida</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#4A6741"></div> Alimentação</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#5B7FB5"></div> Cultura & passeio</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#8C7E6E"></div> Deslocamento</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#B84B2A"></div> Noite</div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">✈️</span>
+        <span class="tl-transit-desc">Aeroparque Jorge Newbery → Cabify para o hotel em Palermo</span>
+        <span class="tl-transit-time">~15–20 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Jardim Botânico Carlos Thays</div>
+          <span class="card-time">~14h–16h</span>
+        </div>
+        <div class="card-addr">Av. Santa Fe 3957 · entrada pela Santa Fe</div>
+        <div class="card-body">Primeira parada em Buenos Aires. Árvores centenárias agrupadas por continente, esculturas ao longo dos caminhos, estufa vitoriana de ferro e vidro dos anos 1890. Tamanho certo para uma tarde de chegada — compacto, bonito e sem multidão. Reserve 1h a 1h30.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Fecha às 18h · fecha seg</span>
+          <span class="tag tag-gray">~1h30</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">A pé pela Soler até o Rita — ~10 min</span>
+        <span class="tl-transit-time">10 min / 700m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Rita Specialty Coffee</div>
+          <span class="card-time">~16h</span>
+        </div>
+        <div class="card-addr">Soler 6093 · Palermo Hollywood</div>
+        <div class="card-body">Melhor café de especialidade da região — ⭐ 4,8 com 9.600 avaliações. Ambiente verde e acolhedor, flat white muito elogiado, avocado toast e sanduíches frescos. Ótimo para o lanche da tarde após o Botânico.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 8h · todos os dias</span>
+          <span class="tag tag-gray">Preço médio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">A pé ou Cabify de volta para a Av. Santa Fe · Coto supermercado</span>
+        <span class="tl-transit-time">~10 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Coto Supermercado</div>
+          <span class="card-time">~17h</span>
+        </div>
+        <div class="card-addr">Av. Santa Fe 3760 · 150m da saída do Botânico</div>
+        <div class="card-body">Suprimentos básicos para os dias em Buenos Aires. Boa seleção de carne, frutas, vinho e produtos locais. Levar passaporte — exigido para pagamento com cartão internacional.</div>
+        <div class="tags">
+          <span class="tag tag-blue">Abre até 21h · sex/sáb até 21h30</span>
+          <span class="tag tag-amber">⚠ Levar passaporte</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🏨</span>
+        <span class="tl-transit-desc">Retorno ao AirBnb · descanso</span>
+        <span class="tl-transit-time">—</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Jantar — decidir no dia</div>
+          <span class="card-time">~20h</span>
+        </div>
+        <div class="card-addr">Palermo · sem reserva necessária</div>
+        <div class="card-body">Duas referências próximas, sem formalidade de reserva:</div>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="option-letter">Opção A</div>
+            <div class="option-name">Hierro Parrilla ⭐ 4,7</div>
+            <div class="option-addr">Costa Rica 5602 · Palermo Hollywood</div>
+            <div class="option-desc">Casual mas sério no que faz. Ribeye, bife de chorizo, chimichurri. WhatsApp: +54 11 2875-6355</div>
+          </div>
+          <div class="option-card">
+            <div class="option-letter">Opção B</div>
+            <div class="option-name">La Cabrera ⭐ 4,4</div>
+            <div class="option-addr">Cabrera 5127 · Palermo Hollywood</div>
+            <div class="option-desc">Happy hour com 40% de desconto a partir das 18h. Chegar cedo e colocar o nome na lista. Jantar até meia-noite.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Chegada</div><div class="sum-value">Aeroparque</div></div>
+    <div class="sum-item"><div class="sum-label">Ritmo</div><div class="sum-value">Leve</div></div>
+    <div class="sum-item"><div class="sum-label">Botânico</div><div class="sum-value">Gratuito</div></div>
+    <div class="sum-item"><div class="sum-label">Reservas</div><div class="sum-value">Nenhuma</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ QUINTA — RECOLETA ══════════════ -->
+<section class="day-section" id="day-qui">
+  <div class="day-header-block">
+    <div class="day-date">Quinta-feira · 27 de agosto</div>
+    <h2 class="day-title">Recoleta</h2>
+    <p class="day-tagline">Roteiro aberto · Sem horários fixos · Um norte, não uma agenda</p>
+  </div>
+
+  <div class="nota-block">O cemitério é a âncora. O resto é Recoleta — deixe o dia se desdobrar.</div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Usina Cafetera Recoleta</div>
+          <span class="card-time">~8h30</span>
+        </div>
+        <div class="card-addr">Beruti 2751 · Recoleta</div>
+        <div class="card-body">Café especial, chipas caseiras, ovo com abacate, varanda externa. Começar sem pressa. Não sair antes de estar pronto — o cemitério não fecha cedo. Do café ao cemitério são 12 minutos a pé pela Beruti.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 8h30 · todos os dias</span>
+          <span class="tag tag-gray">Preço médio · sem reserva</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Beruti até Av. Pueyrredón · virar à esquerda até Junín 1760</span>
+        <span class="tl-transit-time">~12 min / 950m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Cemitério da Recoleta</div>
+          <span class="card-time">~9h30</span>
+        </div>
+        <div class="card-addr">Junín 1760 · entrada gratuita</div>
+        <div class="card-body">Mais de 5 mil mausoléus — elite argentina, simbologia, Eva Perón. Chegar sem horário fixo de saída. O que vale mais do que cobrir tudo é escolher alguns mausoléus e ficar neles. A arquitetura conta histórias que os nomes nas placas não contam.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Abre 9h · fecha 17h</span>
+          <span class="tag tag-amber">Guia recomendado — GetYourGuide ou na entrada</span>
+        </div>
+        <div class="alt-block">
+          <div class="alt-label">Sobre o guia</div>
+          Um bom guia transforma a visita. Um guia ruim engessa o que se quer evitar. Se houver um que pareça interessante na entrada, ótimo. Se não, explorar por conta com calma é igualmente válido.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot free"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Pausa real · Plaza França</div>
+          <span class="card-time">~12h</span>
+        </div>
+        <div class="card-addr">Saindo do cemitério, virar à esquerda · duração livre</div>
+        <div class="card-body">Sentar num banco. Observar quem passa — cachorros, estudantes, casais, pombos enormes. Se houver músico, ouvir. Se houver artesanato, olhar sem obrigação de comprar. Esse intervalo não tem duração recomendada — é o momento mais importante do dia.</div>
+        <div class="tags"><span class="tag tag-teal">Gratuito · aberto 24h</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">50m da saída do cemitério · à direita na Junín</span>
+        <span class="tl-transit-time">~1 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Basílica Nuestra Señora del Pilar</div>
+          <span class="card-time">~12h20</span>
+        </div>
+        <div class="card-addr">Junín 1898 · gratuita · ~20 min</div>
+        <div class="card-body">Segunda igreja mais antiga de Buenos Aires (1732). Arquitetura barroca colonial, altares dourados. Entrar quando sair da praça, no caminho natural — não como destino obrigatório, mas como o que ela é: uma igreja que ficou parada no tempo enquanto o bairro cresceu ao redor.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuita</span>
+          <span class="tag tag-blue">Abre 7h30</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Descendo a Junín e virando na R.M. Ortiz · esquina com a Plaza França</span>
+        <span class="tl-transit-time">~2 min / 120m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">La Parolaccia Recoleta</div>
+          <span class="card-time">~12h30</span>
+        </div>
+        <div class="card-addr">Pres. R.M. Ortiz 1865</div>
+        <div class="card-body">Italiana com 33 anos de história. Massas artesanais feitas no local. Prosecco de boas-vindas e limoncello ao final, cortesia da casa. Destaques: sorrentinos Gran Caruso, ravioles de salmão em tinta de lula, burrattina fritta. Um almoço que convida a ficar, não a terminar logo. ~USD 30 por pessoa com bebida.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 12h</span>
+          <span class="tag tag-gray">Preço médio-alto</span>
+          <span class="tag tag-amber">Reserva recomendada</span>
+        </div>
+        <div class="reserva-badge">🔖 <a href="https://www.laparolaccia.com/reservas/" target="_blank">Reservar: laparolaccia.com/reservas</a></div>
+        <div class="alt-block">
+          <div class="alt-label">Se não tiver reserva ou humor para restaurante</div>
+          Croque Madame no jardim do Museu Decorativo · ou uma padaria com sanduíche e banco na praça.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Av. del Libertador para o norte · caminhada plana e arborizada</span>
+        <span class="tl-transit-time">~8 min / 600m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Museu Nacional de Belas Artes</div>
+          <span class="card-time">~14h</span>
+        </div>
+        <div class="card-addr">Av. del Libertador 1473 · gratuito</div>
+        <div class="card-body">Uma das maiores coleções da América Latina: Goya, Van Gogh, Rembrandt, Rodin. Não tentar ver tudo — identificar o que genuinamente interessa e ir direto. Sentar no banco central quando os pés pedirem. 1h30 assim vale mais que 3h de cobertura sistemática.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Qui–Sex: 11h–19h30 · Sáb: 10h–19h30</span>
+          <span class="tag tag-coral">Fecha segundas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Av. del Libertador voltando ao sul · 600m até o Centro Cultural</span>
+        <span class="tl-transit-time">~8 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Centro Cultural Recoleta</div>
+          <span class="card-time">~16h</span>
+        </div>
+        <div class="card-addr">Junín 1930 · ao lado da Basílica · gratuito</div>
+        <div class="card-body">Convento histórico convertido em espaço cultural. Arte contemporânea, instalações, performance — o que estiver em cartaz em agosto. Vale passar para ver o que está em exibição. Se algo chamar atenção, entrar. Se não, o pátio interno já vale a visita.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-coral">Fecha seg e ter</span>
+        </div>
+        <div class="nota-block">A Floralis Genérica fica no caminho entre o museu e o Centro Cultural pela Figueroa Alcorta. Em agosto fecha por volta das 18h30 — se estiverem passando, param naturalmente.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Encerramento · três opções</div>
+          <span class="card-time">~18h30</span>
+        </div>
+        <div class="card-addr">Escolher no dia, de acordo com o humor</div>
+        <div class="card-body"></div>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="option-letter">Opção A</div>
+            <div class="option-name">Invernadero ⭐ 4,6</div>
+            <div class="option-addr">Agüero 2502 · jardins da Biblioteca Nacional</div>
+            <div class="option-desc">Gin tônico tirado artesanal, tapas, jardim coberto. Entrar pelo portão veicular — não aparece da calçada. WhatsApp: +54 11 2561-2502</div>
+          </div>
+          <div class="option-card">
+            <div class="option-letter">Opção B</div>
+            <div class="option-name">La Biela ⭐ 4,3</div>
+            <div class="option-addr">Av. Manuel Quintana 600 · em frente ao cemitério</div>
+            <div class="option-desc">Café histórico de 150 anos. Mesas na calçada, cortado, a vida do bairro passando. Sem pretensão, sem preço inflado. Abre 8h.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-letter">Opção C</div>
+            <div class="option-name">Sem programa</div>
+            <div class="option-addr">Qualquer direção</div>
+            <div class="option-desc">Andar pela Av. del Libertador ao anoitecer, entrar em qualquer bar que pareça interessante. Buenos Aires tem boa iluminação e a Recoleta é segura.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Dias válidos</div><div class="sum-value">Qua a Sáb</div></div>
+    <div class="sum-item"><div class="sum-label">Total a pé</div><div class="sum-value">~3,5 km</div></div>
+    <div class="sum-item"><div class="sum-label">Museus</div><div class="sum-value">Gratuitos</div></div>
+    <div class="sum-item"><div class="sum-label">Reserva</div><div class="sum-value">La Parolaccia</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ SEXTA — PALERMO ══════════════ -->
+<section class="day-section" id="day-sex">
+  <div class="day-header-block">
+    <div class="day-date">Sexta-feira · 28 de agosto</div>
+    <h2 class="day-title">Palermo I</h2>
+    <p class="day-tagline">Bosques · MALBA · Flanada · Virasoro Bar · Válido qui e sex</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Piquenique + Bike · Bosques de Palermo</div>
+          <span class="card-time">8h</span>
+        </div>
+        <div class="card-addr">Av. Infanta Isabel s/n · Parque Três de Fevereiro</div>
+        <div class="card-body">Chegar cedo para garantir boa sombra perto do lago. Montar o piquenique nos gramados próximos ao Lago de Palermo ou nos arredores do Planetário. Alugar bicicleta dentro do próprio parque e explorar o circuito do lago, o Rosedal e as alamedas arborizadas.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Abre 8h</span>
+          <span class="tag tag-coral">Fecha segundas</span>
+          <span class="tag tag-sage">Bikes para alugar no local</span>
+        </div>
+        <div class="alt-block">
+          <div class="alt-label">Dica para o piquenique</div>
+          Montar a cesta antes: medialunas, sanduíches de miga, alfajores, vinho ou mate. O Paseo de la Infanta — polo gastronômico nos arcos do trem histórico dentro dos Bosques — é ótimo ponto de compra.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">A pé dentro dos Bosques · o Jardim Japonês é parte do mesmo complexo</span>
+        <span class="tl-transit-time">~15 min / 1,1 km</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Jardim Japonês</div>
+          <span class="card-time">~11h</span>
+        </div>
+        <div class="card-addr">Av. Casares 3450 · dentro dos Bosques</div>
+        <div class="card-body">Pontes vermelhas, carpas koi, exposições de cultura japonesa e aulas de origami gratuitas aos sábados. Tem restaurante japonês dentro — bom para um chá antes do almoço.</div>
+        <div class="tags">
+          <span class="tag tag-amber">Pago ~USD 5</span>
+          <span class="tag tag-blue">Abre 10h</span>
+          <span class="tag tag-coral">Fecha domingos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Saindo pelo acesso principal · seguir pela Bulnes até o restaurante</span>
+        <span class="tl-transit-time">~10 min / 750m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">La Dorita Botânico</div>
+          <span class="card-time">~12h</span>
+        </div>
+        <div class="card-addr">Bulnes 2593 · Palermo</div>
+        <div class="card-body">Parrilla argentina clássica com ótimo custo-benefício. Asado de tira, empanadas picantes, provoleta grelhada. Ambiente descontraído com opção de mesa externa. Aberto todos os dias a partir do meio-dia.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 12h · todos os dias</span>
+          <span class="tag tag-teal">Preço médio-baixo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Av. del Libertador em direção ao rio até o MALBA</span>
+        <span class="tl-transit-time">~10 min / 750m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">MALBA — Museu de Arte Latino-Americana</div>
+          <span class="card-time">~13h30</span>
+        </div>
+        <div class="card-addr">Av. Figueroa Alcorta 3415</div>
+        <div class="card-body">Coleção permanente com Frida Kahlo, Diego Rivera, Botero e arte latino-americana contemporânea. O 3º andar costuma ter a exposição temporária mais interessante. Café no térreo. Tem cinema dentro.</div>
+        <div class="tags">
+          <span class="tag tag-amber">Pago ~USD 8</span>
+          <span class="tag tag-coral">Fecha terças</span>
+          <span class="tag tag-blue">Qua: abre 11h · demais dias: 12h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶 / 🚕</span>
+        <span class="tl-transit-desc">Av. del Libertador → Plaza Italia → Thames · início da flanada</span>
+        <span class="tl-transit-time">~15 min / 1,2 km</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Flanada por Palermo</div>
+          <span class="card-time">~15h15</span>
+        </div>
+        <div class="card-addr">Thames → Serrano → Honduras → El Salvador → Gorriti → Borges</div>
+        <div class="card-body">Percurso livre. Sem sequência obrigatória — entrar na Thames e seguir o instinto pelas transversais. O cardápio abaixo é para consultar conforme a vontade surgir.</div>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="option-name">📚 Libros del Pasaje ⭐ 4,6</div>
+            <div class="option-addr">Thames 1762</div>
+            <div class="option-desc">Casarão com café integrado, mezanino de arte. Abre 10h (14h dom).</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">📚 Eterna Cadencia ⭐ 4,6</div>
+            <div class="option-addr">Honduras 5582</div>
+            <div class="option-desc">Pátio sombreado, terraço, curadoria literária. Fecha domingos.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🍦 Lucciano's ⭐ 4,4</div>
+            <div class="option-addr">Honduras 4881</div>
+            <div class="option-desc">Gelato de alto nível. Dulce de leche e Patagonia como destaques.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">☕ PANI ⭐ 4,3</div>
+            <div class="option-addr">El Salvador 4827</div>
+            <div class="option-desc">Café bem decorado, latte e bolo de chocolate elogiados. Fecha seg.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">👗 Dudou Vintage ⭐ 4,8</div>
+            <div class="option-addr">Guatemala 4334</div>
+            <div class="option-desc">Dois andares de peças bem selecionadas. Sem pressão de venda.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🍷 Pain et Vin ⭐ 4,6</div>
+            <div class="option-addr">Gorriti 5132</div>
+            <div class="option-desc">Wine bar íntimo. Curadoria de vinhos argentinos. Abre 16h. Fecha seg/ter.</div>
+          </div>
+        </div>
+        <div class="tags"><span class="tag tag-gray">~2h30 · ~3,5 km total</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Virasoro Bar · jazz ao vivo</div>
+          <span class="card-time">~19h · show às 21h</span>
+        </div>
+        <div class="card-addr">Guatemala 4328 · Palermo Soho</div>
+        <div class="card-body">Jazz ao vivo num edifício art déco de 1920 projetado por Alejandro Virasoro. Um dos clubes de jazz mais respeitados de Buenos Aires — frequentado por portenhos que vão pela música. Espaço íntimo com ~10 mesas próximas ao palco. Cardápio de tapas e picadas — jantar antes na Honduras ou El Salvador. Ingressos esgotam: reservar com antecedência.</div>
+        <div class="tags">
+          <span class="tag tag-coral">Qui e sex: abre 19h</span>
+          <span class="tag tag-amber">Reserva obrigatória</span>
+          <span class="tag tag-gray">Preço médio</span>
+        </div>
+        <div class="reserva-badge">🔖 <a href="http://www.virasorobar.com.ar" target="_blank">virasorobar.com.ar</a> · Tel: +54 11 3577-6807</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Dias válidos</div><div class="sum-value">Qui e Sex</div></div>
+    <div class="sum-item"><div class="sum-label">MALBA</div><div class="sum-value">~USD 8</div></div>
+    <div class="sum-item"><div class="sum-label">Jardim Japonês</div><div class="sum-value">~USD 5</div></div>
+    <div class="sum-item"><div class="sum-label">Reserva urgente</div><div class="sum-value">Virasoro Bar</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ SÁBADO — CENTRO ══════════════ -->
+<section class="day-section" id="day-sab">
+  <div class="day-header-block">
+    <div class="day-date">Sábado · 29 de agosto</div>
+    <h2 class="day-title">Centro · Puerto Madero · San Telmo</h2>
+    <p class="day-tagline">Dia completo · história, orla e noite cultural</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">London City</div>
+          <span class="card-time">8h30</span>
+        </div>
+        <div class="card-addr">Av. de Mayo 599 · Centro</div>
+        <div class="card-body">Bar histórico frequentado por portenhos — sem fila, sem preço inflado. Café con leche + medialunas. Estátua de Cortázar numa mesa próxima à janela. Citações de Borges nas paredes. Alternativa autêntica ao Tortoni logo ali perto.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 6h · todos os dias</span>
+          <span class="tag tag-teal">Preço médio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Av. de Mayo até a Plaza de Mayo · 5 min</span>
+        <span class="tl-transit-time">~5 min / 300m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Catedral Metropolitana</div>
+          <span class="card-time">9h20</span>
+        </div>
+        <div class="card-addr">San Martín 27 · lateral da Plaza de Mayo</div>
+        <div class="card-body">12 colunas representando os apóstolos, nave de quase 100m, mausoléu de San Martín e Museu Bergoglio (objetos pessoais do Papa Francisco). Troca de guarda às 9h30 — coordenar chegada para ver a cerimônia. Missas às 8h30, 12h30 e 17h30 — evitar nesses horários.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuita</span>
+          <span class="tag tag-blue">Sáb: 9h–19h30</span>
+          <span class="tag tag-amber">⚠ Ombros e joelhos cobertos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Passeio livre pela Plaza de Mayo · fachada da Casa Rosada</span>
+        <span class="tl-transit-time">~20 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Cabildo e Museu Nacional</div>
+          <span class="card-time">10h30</span>
+        </div>
+        <div class="card-addr">Bolívar 65 · lateral oeste da Plaza</div>
+        <div class="card-body">Único edifício colonial remanescente (1751). Documentos da Semana de Maio de 1810. Destaque: varanda do 2º andar com a melhor vista panorâmica de toda a Plaza de Mayo. Tour guiado sáb: 11h, 12h30, 14h e 15h30.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Abre 10h30 · qua–dom</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Lateral sul da Plaza até a Paseo Colón · portão lateral</span>
+        <span class="tl-transit-time">~3 min / 200m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Museu Casa Rosada</div>
+          <span class="card-time">11h25</span>
+        </div>
+        <div class="card-addr">Av. Paseo Colón 100 · acesso pelo portão lateral — não pela fachada da Plaza</div>
+        <div class="card-body">Subsolo e galerias da antiga Aduana Taylor. Fundações do forte original de Buenos Aires (1580), mural de David Alfaro Siqueiros e 200 anos de história argentina.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-blue">Abre 11h · qua–dom</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Pela Corrientes até o Güerrín · 700m em linha reta</span>
+        <span class="tl-transit-time">~10 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Güerrín</div>
+          <span class="card-time">12h30</span>
+        </div>
+        <div class="card-addr">Av. Corrientes 1368 · próximo ao Obelisco</div>
+        <div class="card-body">Pizzaria lendária desde 1932. Fugazza e fugazzeta icônicas — pizza portenha com borda caramelizada e queijo abundante. Sistema de balcão: rápido, sem reserva, preço baixo. ⭐ 4,7 com 205 mil avaliações.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 11h · todos os dias</span>
+          <span class="tag tag-teal">Preço baixo · sem reserva</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Flanada pelo Microcentro</div>
+          <span class="card-time">13h20</span>
+        </div>
+        <div class="card-addr">Corrientes → Florida → Galerías Pacífico → Retiro · ~2h30</div>
+        <div class="card-body">Percurso livre com paradas à escolha. Encerra na Plaza San Martín antes de Cabify para Puerto Madero.</div>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="option-name">🏛 Edificio Comega</div>
+            <div class="option-addr">Av. Corrientes 222 · só exterior</div>
+            <div class="option-desc">Art déco escalonado de 1932. Obelisco ao fundo na perspectiva da Corrientes.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🏛 Pasaje Roverano</div>
+            <div class="option-addr">Av. de Mayo 560</div>
+            <div class="option-desc">Galeria coberta de 1908. Barbearia do Papa Francisco, loja de chapéus, chão de mármore.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🏛 Edificio Otto Wulff</div>
+            <div class="option-addr">Av. Belgrano 609 · só exterior</div>
+            <div class="option-desc">Art nouveau mais ornamental de BA (1914). Cúpula verde e ornamentos florais. ⭐ 4,8</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🏛 Galerías Pacífico</div>
+            <div class="option-addr">Florida 753 · gratuito</div>
+            <div class="option-desc">Beaux-Arts de 1889. Afrescos de Castagnino, Berni e Spilimbergo na cúpula central. Imperdível.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">⛪ Convento Santo Domingo</div>
+            <div class="option-addr">Defensa 422</div>
+            <div class="option-desc">Marcas de canhão das invasões britânicas de 1807 ainda visíveis nas torres. Gratuito.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">☕ Confiteria La Ideal</div>
+            <div class="option-addr">Suipacha 384</div>
+            <div class="option-desc">Palacete Belle Époque de 1912. Saxofonista ao vivo, chocolate quente excepcional.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚕</span>
+        <span class="tl-transit-desc">Cabify da Plaza San Martín até Puerto Madero · Puente de la Mujer</span>
+        <span class="tl-transit-time">~10 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Puerto Madero · entardecer</div>
+          <span class="card-time">~16h</span>
+        </div>
+        <div class="card-addr">Puente de la Mujer → orla dos diques</div>
+        <div class="card-body">O melhor horário do bairro: luz dourada do entardecer refletindo nos diques. Puente de la Mujer de Santiago Calatrava. Fragata Presidente Sarmiento disponível sáb a partir das 13h (pago, muito barato). Apenas passeio e fotografia — sem jantar aqui.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Orla aberta 24h · gratuito</span>
+          <span class="tag tag-gray">~1h30 de passeio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚕</span>
+        <span class="tl-transit-desc">Cabify para o AirBnb · descanso e banho antes da noite</span>
+        <span class="tl-transit-time">~15–20 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">La Brigada · jantar</div>
+          <span class="card-time">20h</span>
+        </div>
+        <div class="card-addr">Estados Unidos 465 · San Telmo</div>
+        <div class="card-body">Parrilla com mais de 30 anos no coração de San Telmo. Decoração de futebol, tango de fundo, carne cortada com colher na mesa. Ojo de bife e bife de chorizo como destaques. ~30–40 euros por pessoa com entrada, prato e vinho. Reservar com pelo menos 1 semana de antecedência.</div>
+        <div class="tags">
+          <span class="tag tag-coral">Jantar: 20h–meia-noite</span>
+          <span class="tag tag-gray">Preço médio-alto</span>
+          <span class="tag tag-amber">Fecha segundas</span>
+        </div>
+        <div class="reserva-badge">🔖 Reservas: <a class="tel" href="tel:+541143615557">+54 11 4361-5557</a> · @parrillalabrigada</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">A pé pela Defensa até o Torquato Tasso</span>
+        <span class="tl-transit-time">~7 min / 500m</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Torquato Tasso · show ao vivo</div>
+          <span class="card-time">22h</span>
+        </div>
+        <div class="card-addr">Defensa 1575 · San Telmo</div>
+        <div class="card-body">Um dos espaços mais importantes da música portenha. Sábados: orquestra ao vivo de tango, folklore ou bolero — programação varia por semana, verificar antes de ir. Ambiente íntimo, acústica muito elogiada, público predominantemente portenho. Bebidas disponíveis. Atenção: não aceita cartão, apenas dinheiro. Chegar com antecedência para garantir boa posição.</div>
+        <div class="tags">
+          <span class="tag tag-coral">Abre 20h · sáb com orquestra ao vivo</span>
+          <span class="tag tag-amber">~USD 20 o show</span>
+          <span class="tag tag-amber">⚠ Só dinheiro em espécie</span>
+        </div>
+        <div class="reserva-badge">🔖 <a href="http://www.torquatotasso.com.ar" target="_blank">torquatotasso.com.ar</a> · Tel: +54 11 4307-6506</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Dia válido</div><div class="sum-value">Sábado</div></div>
+    <div class="sum-item"><div class="sum-label">Total a pé</div><div class="sum-value">~5,5 km</div></div>
+    <div class="sum-item"><div class="sum-label">Museus manhã</div><div class="sum-value">Gratuitos</div></div>
+    <div class="sum-item"><div class="sum-label">Reservas</div><div class="sum-value">La Brigada + Torquato</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ DOMINGO — SAN TELMO ══════════════ -->
+<section class="day-section" id="day-dom">
+  <div class="day-header-block">
+    <div class="day-date">Domingo · 31 de agosto</div>
+    <h2 class="day-title">San Telmo</h2>
+    <p class="day-tagline">Feira · bairro histórico · jantar de encerramento em Palermo</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot food"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">La Poesía</div>
+          <span class="card-time">~8h</span>
+        </div>
+        <div class="card-addr">Chile 502 · esquina Bolívar · San Telmo</div>
+        <div class="card-body">Café literário histórico fundado em 1982 pelo poeta Rubén Derlis. Ponto de encontro de Juan Gelman, Olga Orozco e Alejandra Pizarnik. Citações de Borges nas paredes. Piso de azulejos vintage, piano de início do século XX, mezanino. Café da manhã para dois: dois lattes, sucos de laranja, torradas de presunto e queijo, medialunas, bolo de cenoura, iogurte com granola. Começar aqui, devagar, antes do movimento da feira.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Abre 8h · todos os dias</span>
+          <span class="tag tag-blue">Fecha à meia-noite (dom)</span>
+          <span class="tag tag-gray">Sem reservas · por ordem de chegada</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">A pé 1 quarteirão até a Defensa 961 · entrada do Mercado</span>
+        <span class="tl-transit-time">~2 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Mercado de San Telmo</div>
+          <span class="card-time">~9h</span>
+        </div>
+        <div class="card-addr">Defensa 961 · edifício de ferro e vidro de 1897</div>
+        <div class="card-body">Chegar cedo — antes das 10h o Mercado ainda está no ritmo local, sem a multidão da feira de rua. Dois mundos para explorar: o núcleo central (açougues e verdureiros históricos com décadas no mesmo posto) e os braços laterais (Defensa e Estados Unidos) com postos de vinil, livros e antiguidades. A conversa com os comerciantes de décadas vale mais do que qualquer objeto comprado.</div>
+        <div class="tags">
+          <span class="tag tag-blue">Dom: abre 9h · fecha 20h</span>
+          <span class="tag tag-amber">⚠ Dinheiro em espécie · muitos vendedores sem maquininha</span>
+        </div>
+        <div class="alt-block">
+          <div class="alt-label">O que garimpar</div>
+          Discos de vinil nos braços laterais (tango clássico, folklore, rock nacional argentino) · livros de literatura argentina · antigas louças e objetos de coleção · alfajores e chocolates Hönecker para levar.
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Saindo pela entrada da Defensa · a feira de rua já está começando</span>
+        <span class="tl-transit-time">~2 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Feria de San Telmo</div>
+          <span class="card-time">~10h</span>
+        </div>
+        <div class="card-addr">Calle Defensa + Plaza Dorrego · 1,5 km de extensão</div>
+        <div class="card-body">A feira tem dois territórios distintos: a Calle Defensa (artesanato, antiguidades, artistas de rua, músicos, dançarinos de tango espontâneos) e a Plaza Dorrego (o coração histórico — só itens anteriores a 1955, regra fiscalizada pelos próprios expositores). Agosto: inverno portenho = menos lotado que no verão, ótimo para flanar com calma. Pico de movimento entre 11h e 15h.</div>
+        <div class="tags">
+          <span class="tag tag-blue">Dom: 10h–17h</span>
+          <span class="tag tag-teal">Gratuito</span>
+          <span class="tag tag-amber">⚠ Atenção a batedores de carteira · mochila na frente</span>
+          <span class="tag tag-amber">⚠ Dinheiro em espécie para compras</span>
+        </div>
+        <div class="nota-block">Calçado confortável obrigatório — são quilômetros em paralelepípedos. Em agosto: casaco para a manhã, que esquenta ao longo do dia.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot free"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Pausa nos arredores da Plaza Dorrego</div>
+          <span class="card-time">~12h30</span>
+        </div>
+        <div class="card-addr">Raio de 200m da Plaza Dorrego · escolher no dia</div>
+        <div class="card-body">Após o Mercado e a feira, o ritmo pede desacelerar. Todas as opções abaixo ficam a menos de 5 minutos a pé da Plaza:</div>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="option-name">🍺 Bar El Federal ⭐ 4,4</div>
+            <div class="option-addr">Carlos Calvo 599 · abre 8h · todos os dias</div>
+            <div class="option-desc">Bar notable de 1864. Balcão de madeira maciça original, vitrais. Melhor tortilla espanhola da região. O mais autêntico do entorno.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">☕ Origen Café ⭐ 4,3</div>
+            <div class="option-addr">Humberto 1º 599 · abre 9h · todos os dias</div>
+            <div class="option-desc">Café orgânico na esquina da Plaza. Cardápio do dia completo. Mesas externas com vista para o movimento do domingo.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🏛 Galería de la Defensa ⭐ 4,4</div>
+            <div class="option-addr">Defensa 1179 · abre 10h · todos os dias</div>
+            <div class="option-desc">Conventillo de 1900 convertido em galeria. Café, antiguidades, especialista em canetas tinteiro antigas. A história do bairro palpável em cada parede.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">🗿 Sur Coleccionismo ⭐ 4,7</div>
+            <div class="option-addr">Estados Unidos 460 · abre 12h dom</div>
+            <div class="option-desc">Anticuário pequeno onde o dono conta a história de cada objeto. Brinquedos antigos, livros, objetos de coleção raros.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">📚 La Libre ⭐ 4,8</div>
+            <div class="option-addr">Chacabuco 917 · abre 14h dom</div>
+            <div class="option-desc">A melhor livraria do bairro. Especializada em poesia e editoras independentes. Cineclub, exposições, oficinas de escrita. Encaixa na tarde.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-name">☕ Café del Árbol ⭐ 4,0</div>
+            <div class="option-addr">Humberto 1º 424 · abre 8h dom</div>
+            <div class="option-desc">Mesas na calçada com vista para a Plaza e para o tango espontâneo. Melhor para uma bebida do que para comer.</div>
+          </div>
+        </div>
+        <div class="nota-block">A partir das 18h, quando a feira fecha, a Plaza Dorrego se transforma numa milonga espontânea — moradores do bairro dançam até o início da noite. Vale ficar se ainda houver energia.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚕</span>
+        <span class="tl-transit-desc">Cabify para o AirBnb em Palermo · descanso antes do jantar</span>
+        <span class="tl-transit-time">~15–20 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot night"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Minga Parrilla · jantar de encerramento</div>
+          <span class="card-time">~20h</span>
+        </div>
+        <div class="card-addr">Costa Rica 4528 · Palermo Soho</div>
+        <div class="card-body">⭐ 4,6 com quase 11 mil avaliações. O lomo "a punto" é o prato mais pedido — ponto entre mal passado e ao ponto, resultado excepcional. Carta de vinhos muito bem curada, garçons que fazem recomendações certeiras. Um visitante foi dois dias seguidos. Boa pedida para encerrar a semana em Buenos Aires.</div>
+        <div class="tags">
+          <span class="tag tag-coral">Abre 12h · todos os dias</span>
+          <span class="tag tag-gray">Preço médio</span>
+        </div>
+        <div class="reserva-badge">🔖 Reservas: <a class="tel" href="tel:+541180310574">+54 11 8031-0574</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Dia válido</div><div class="sum-value">Domingo</div></div>
+    <div class="sum-item"><div class="sum-label">Feira</div><div class="sum-value">10h–17h</div></div>
+    <div class="sum-item"><div class="sum-label">Tudo gratuito</div><div class="sum-value">Exceto jantar</div></div>
+    <div class="sum-item"><div class="sum-label">Jantar</div><div class="sum-value">Minga Parrilla</div></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+function showDay(dayId, tab) {
+  document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('day-' + dayId).classList.add('active');
+  tab.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+</script>
+
+</body>
+</html>
