@@ -419,6 +419,40 @@ a.tel:hover { text-decoration: underline; }
   .tl-item { padding-left: 34px; }
   .day-summary { grid-template-columns: 1fr 1fr; font-size: 13px; }
 }
+/* ── LIVRARIAS ── */
+.lib-cat-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin: 1.5rem 0 0.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+.lib-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 0.65rem; }
+.lib-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 3px; }
+.lib-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--ink); flex: 1; }
+.lib-badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+.badge-novo { background: #E1F5EE; color: #085041; }
+.badge-usado { background: #EBF0F8; color: #1A4A7A; }
+.badge-misto { background: #F5F0E8; color: #6A5A48; }
+.badge-feira { background: #FDF0D8; color: #7A4A08; }
+.badge-secret { background: #FAECE7; color: #7A2A10; }
+.lib-addr { font-size: 12px; color: var(--dust); margin-bottom: 6px; }
+.lib-desc { font-size: 13px; color: #3A3530; line-height: 1.65; margin-bottom: 8px; }
+.lib-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
+.lib-encaixe { font-size: 12px; color: var(--sage); font-weight: 500; padding: 4px 0 0; border-top: 1px solid var(--border); margin-top: 6px; }
+.lib-encaixe::before { content: '📍 '; }
+.lib-intro { background: var(--ink); color: var(--cream); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 1.25rem; font-size: 13.5px; line-height: 1.65; }
+.lib-intro strong { color: var(--gold); }
+.lib-feiras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+.lib-feira-card { background: var(--paper); border-radius: 10px; padding: 0.75rem 0.85rem; border: 1px solid var(--border); }
+.lib-feira-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.lib-feira-addr { font-size: 11.5px; color: var(--dust); margin-bottom: 4px; }
+.lib-feira-desc { font-size: 12px; color: #4A4540; line-height: 1.4; }
+
+.dist-block{background:var(--paper);border-radius:10px;padding:.85rem 1rem;margin-bottom:.9rem;border:1px solid var(--border);}
+.dist-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dust);margin-bottom:.6rem;}
+.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;}
+.dist-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:3px 0;border-bottom:.5px solid var(--border);}
+.dist-row:last-child{border-bottom:none;}
+.dist-lbl{color:var(--dust);}
+.dist-val{font-weight:500;color:var(--ink);text-align:right;}
+.b-walk{background:#E8F0E7;color:#2A5025;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
+.b-car{background:#FDF0D8;color:#7A4A08;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
+@media(max-width:480px){.dist-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -426,10 +460,11 @@ a.tel:hover { text-decoration: underline; }
 <header class="site-header">
   <div class="header-eyebrow">Marina & Alysson · Roteiro de viagem</div>
   <h1 class="header-title">Buenos <em>Aires</em></h1>
-  <p class="header-sub">26 de agosto — 31 de agosto de 2025 · Casal · AirBnb em Palermo</p>
+  <p class="header-sub">26 de agosto — 31 de agosto de 2025 · Casal · AirBnb em Palermo Viejo · Fray Justo Sta. María de Oro 2576</p>
   <div class="header-meta">
     <span class="meta-pill">5 dias</span>
     <span class="meta-pill">Aeroparque</span>
+    <span class="meta-pill">AirBnb: Fray Justo Sta. María de Oro 2576</span>
     <span class="meta-pill">Palermo · Recoleta · Centro · San Telmo</span>
   </div>
 </header>
@@ -461,6 +496,21 @@ a.tel:hover { text-decoration: underline; }
       <span class="day-tab-num">31</span>
       <span class="day-tab-label">San Telmo</span>
     </a>
+    <a class="day-tab" onclick="showDay('livros', this)" href="#">
+      <span class="day-tab-weekday">📚</span>
+      <span class="day-tab-num" style="font-size:1rem;line-height:1.8">Livros</span>
+      <span class="day-tab-label">Sebos &amp; livrarias</span>
+    </a>
+    <a class="day-tab" onclick="showDay('parrillas', this)" href="#">
+      <span class="day-tab-weekday">🥩</span>
+      <span class="day-tab-num" style="font-size:1rem;line-height:1.8">Carnes</span>
+      <span class="day-tab-label">Parrillas</span>
+    </a>
+    <a class="day-tab" onclick="showDay('museus', this)" href="#">
+      <span class="day-tab-weekday">🏛️</span>
+      <span class="day-tab-num" style="font-size:1rem;line-height:1.8">Museus</span>
+      <span class="day-tab-label">Cultura</span>
+    </a>
   </div>
 </nav>
 
@@ -474,6 +524,15 @@ a.tel:hover { text-decoration: underline; }
     <p class="day-tagline">Roteiro leve · Palermo · Sem agenda rígida</p>
   </div>
 
+  <div class="dist-block">
+    <div class="dist-title">📍 Do AirBnb — distâncias</div>
+    <div class="dist-grid">
+<div class="dist-row"><span class="dist-lbl">Jardim Botânico (âncora)</span><span class="dist-val"><span class="b-walk">850m · 11 min a pé</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Rita Specialty Coffee</span><span class="dist-val"><span class="b-walk">1,8km · 22 min a pé</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Coto supermercado</span><span class="dist-val"><span class="b-walk">900m · 12 min a pé</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Aeroparque → AirBnb</span><span class="dist-val"><span class="b-car">4km · ~12 min Cabify</span></span></div>
+    </div>
+  </div>
   <div class="legend">
     <div class="leg-item"><div class="leg-dot" style="background:#4A6741"></div> Alimentação</div>
     <div class="leg-item"><div class="leg-dot" style="background:#5B7FB5"></div> Cultura & passeio</div>
@@ -612,6 +671,15 @@ a.tel:hover { text-decoration: underline; }
     <p class="day-tagline">Roteiro aberto · Sem horários fixos · Um norte, não uma agenda</p>
   </div>
 
+  <div class="dist-block">
+    <div class="dist-title">📍 Do AirBnb — distâncias</div>
+    <div class="dist-grid">
+<div class="dist-row"><span class="dist-lbl">Usina Cafetera (Beruti 2751)</span><span class="dist-val"><span class="b-car">1,6km · 6 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Metrô alternativo</span><span class="dist-val"><span class="b-walk">Linha D · Scalabrini Ortiz → Bulnes</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Retorno ao AirBnb (noite)</span><span class="dist-val"><span class="b-car">do Invernadero · 2km Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Linha D de volta</span><span class="dist-val"><span class="b-walk">Agüero → Scalabrini Ortiz</span></span></div>
+    </div>
+  </div>
   <div class="nota-block">O cemitério é a âncora. O resto é Recoleta — deixe o dia se desdobrar.</div>
 
   <div class="timeline">
@@ -833,6 +901,15 @@ a.tel:hover { text-decoration: underline; }
     <p class="day-tagline">Bosques · MALBA · Flanada · Virasoro Bar · Válido qui e sex</p>
   </div>
 
+  <div class="dist-block">
+    <div class="dist-title">📍 Do AirBnb — distâncias</div>
+    <div class="dist-grid">
+<div class="dist-row"><span class="dist-lbl">Bosques de Palermo</span><span class="dist-val"><span class="b-walk">1,1km · 14 min a pé</span></span></div>
+<div class="dist-row"><span class="dist-lbl">MALBA (tarde)</span><span class="dist-val"><span class="b-car">2,5km · 8 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Virasoro Bar (noite)</span><span class="dist-val"><span class="b-walk">900m · 11 min a pé</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Retorno ao AirBnb</span><span class="dist-val"><span class="b-walk">do Virasoro a pé · 11 min</span></span></div>
+    </div>
+  </div>
   <div class="timeline">
 
     <div class="tl-item">
@@ -1024,6 +1101,15 @@ a.tel:hover { text-decoration: underline; }
     <p class="day-tagline">Dia completo · história, orla e noite cultural</p>
   </div>
 
+  <div class="dist-block">
+    <div class="dist-title">📍 Do AirBnb — distâncias</div>
+    <div class="dist-grid">
+<div class="dist-row"><span class="dist-lbl">London City · café (Av. de Mayo 599)</span><span class="dist-val"><span class="b-car">7,5km · 20 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Puerto Madero (final de tarde)</span><span class="dist-val"><span class="b-car">9km · 25 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">La Brigada · jantar (San Telmo)</span><span class="dist-val"><span class="b-car">8km · 22 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Retorno ao AirBnb (antes do jantar)</span><span class="dist-val"><span class="b-car">8km · 22 min Cabify</span></span></div>
+    </div>
+  </div>
   <div class="timeline">
 
     <div class="tl-item">
@@ -1441,6 +1527,739 @@ a.tel:hover { text-decoration: underline; }
   </div>
 </section>
 
+<!-- ══════════════ LIVRARIAS E SEBOS ══════════════ -->
+<section class="day-section" id="day-livros">
+  <div class="day-header-block">
+    <div class="day-date">Guia permanente</div>
+    <h2 class="day-title">Livrarias & Sebos</h2>
+    <p class="day-tagline">Buenos Aires · a cidade com mais livrarias por habitante do mundo</p>
+  </div>
+
+  <div class="lib-intro">
+    <strong>Buenos Aires é a cidade com mais livrarias por habitante do mundo.</strong> Há de tudo — grandes redes, livrarias históricas, cavernas com livros velhos empilhados, espaços secretos e feiras ao ar livre. A prática de comprar e vender livros usados é muito arraigada na cidade, talvez herdada da França com seus bouquinistes à beira do Sena. O guia abaixo indica onde cada espaço se encaixa no roteiro de vocês.
+  </div>
+
+  <div class="lib-cat-label">Ícones incontornáveis</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">El Ateneo Grand Splendid</div>
+      <span class="lib-badge badge-novo">Novo</span>
+    </div>
+    <div class="lib-addr">Av. Santa Fe 1860 · Recoleta · @elateneograndsplendid · abre 9h–21h todos os dias</div>
+    <div class="lib-desc">Teatro do início do século XX convertido em livraria — a segunda mais bonita do mundo segundo The Guardian, primeira pela National Geographic. Camarotes virados em espaços de leitura, confeitaria no palco original, afresco de Nazareno Orlandi no teto celebrando o fim da Primeira Guerra. Visualmente impossível de ignorar. Aviso honesto: muito turística para uma experiência tranquila — mas o espaço em si justifica.</div>
+    <div class="lib-tags">
+      <span class="tag tag-blue">2ª mais bonita do mundo · The Guardian</span>
+      <span class="tag tag-gray">Abre até 21h</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — 10 min a pé do cemitério pela Av. Santa Fe</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Librería de Ávila</div>
+      <span class="lib-badge badge-misto">Novo + Usado</span>
+    </div>
+    <div class="lib-addr">Adolfo Alsina 500 · Centro · @libreriadeavila · a 1 quadra da Plaza de Mayo</div>
+    <div class="lib-desc">Fundada em 1785 — a livraria ativa mais antiga do mundo. Declarada Monumento Histórico Nacional. Começou como botica vendendo ervas medicinais; os livros foram chegando gradualmente. Jovens rebeldes dos albores de Maio reuniam-se aqui para discutir títulos proibidos de Montesquieu e Rousseau. Hoje abriga ~100 mil livros, incluindo edições do século XVIII e uma primeira edição de "Luna de enfrente" de Borges. O subsolo é o tesouro: corredores de livros de segunda mão de história, filosofia e literatura argentina. O cheiro de papel velho ao entrar é imediato.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">A mais antiga do mundo · 1785</span>
+      <span class="tag tag-blue">Monumento Histórico Nacional</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — 5 min a pé da Plaza de Mayo, dentro do roteiro da manhã</div>
+  </div>
+
+  <div class="lib-cat-label">Livrarias com café — para ficar horas</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Eterna Cadencia</div>
+      <span class="lib-badge badge-novo">Novo</span>
+    </div>
+    <div class="lib-addr">Honduras 5574 · Palermo · @eternacadencia · abre 9h (12h sáb · fecha dom)</div>
+    <div class="lib-desc">Em uma casona de Palermo Viejo, combina catálogo curado, eventos culturais e um café com pátio sombreado e terraço. Foco em literatura latino-americana, poesia e editoras independentes — a curadoria é feita com critério editorial real, não comercial. Foi a livraria eleita pelo presidente chileno Gabriel Boric durante sua visita à Argentina. Para o perfil de vocês, possivelmente a mais alinhada de toda Buenos Aires.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">A mais alinhada ao perfil de vocês</span>
+      <span class="tag tag-gray">Pátio + terraço</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — já está no cardápio da flanada, Honduras 5574</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Libros del Pasaje</div>
+      <span class="lib-badge badge-misto">Novo + Usado</span>
+    </div>
+    <div class="lib-addr">Thames 1762 · Palermo · @librosdelpasaje · abre 10h (14h dom)</div>
+    <div class="lib-desc">Casarão histórico com café integrado, mezanino de arte e sofás nos fundos. Uma das mais frequentadas por moradores de Palermo. Cortado muito bom, ambiente acolhedor sem pretensão. Boa para uma pausa longa no meio da flanada.</div>
+    <div class="lib-tags">
+      <span class="tag tag-gray">Café integrado</span>
+      <span class="tag tag-teal">Abre 10h todos os dias</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — já está no cardápio da flanada, Thames 1762</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Clásica y Moderna</div>
+      <span class="lib-badge badge-novo">Novo</span>
+    </div>
+    <div class="lib-addr">Av. Callao 892 · Recoleta · @clasicaymoderna · abre seg–sex 9h–19h</div>
+    <div class="lib-desc">Fundada em 1938 por um emigrante espanhol. Por aqui passaram Borges e Bioy Casares. Fechou por um tempo e reabriu em 2023 — declarada Sitio de Interés Cultural e integrante da lista de Livrarias Notáveis e Bares Notáveis de Buenos Aires. Tem restaurante com paredes de tijolo, música ao vivo em alguns dias e um acervo amplo. Para quem quer a experiência mais completa num único espaço: livros, comida e história literária.</div>
+    <div class="lib-tags">
+      <span class="tag tag-blue">Bar + restaurante integrado</span>
+      <span class="tag tag-amber">Música ao vivo alguns dias</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — Callao 892, 15 min a pé do cemitério</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">La Libre</div>
+      <span class="lib-badge badge-novo">Novo + Eventos</span>
+    </div>
+    <div class="lib-addr">Chacabuco 917 · San Telmo · @lalibrelibros · abre 14h dom</div>
+    <div class="lib-desc">Especializada em poesia e editoras independentes argentinas. Acervo de livros usados, fanzines e uma programação cultural própria: cineclub, exposições, apresentações de livros e oficinas de escrita. Uma ex-moradora de San Telmo a coloca na lista do que mais sente falta do bairro. Para quem quer encontrar o que os algoritmos nunca recomendariam.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">Poesia + editoras independentes</span>
+      <span class="tag tag-coral">Abre 14h aos domingos</span>
+    </div>
+    <div class="lib-encaixe">Domingo (San Telmo) — encaixa perfeitamente no bloco da tarde, após a feira</div>
+  </div>
+
+  <div class="lib-cat-label">Livrarias especializadas e de nicho</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">El Túnel</div>
+      <span class="lib-badge badge-misto">Antigos + 1ªs edições</span>
+    </div>
+    <div class="lib-addr">Av. de Mayo 1176 · Centro · Patrimônio Cultural da Cidade</div>
+    <div class="lib-desc">Funciona no subsolo do Palácio Vera — edifício modernista austríaco que chama atenção da calçada. Especializada em livros antigos e primeiras edições. Da vitrine já é possível espiar algumas joias: há exemplares que datam de 1561. Escritores, bibliófilos e curiosos a frequentam desde sua fundação. Uma fotografia de Hemingway nas paredes. O destino mais especializado do Centro para quem quer raridades históricas.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Exemplares desde 1561</span>
+      <span class="tag tag-blue">Patrimônio Cultural da Cidade</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — Av. de Mayo 1176, a 2 quadras do London City</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Walrus Books</div>
+      <span class="lib-badge badge-usado">Usados em inglês</span>
+    </div>
+    <div class="lib-addr">Estados Unidos 617 · San Telmo · @walrusbooksbsas · ter–dom 12h–19h · fecha seg</div>
+    <div class="lib-desc">Livraria de livros usados em inglês — de tetos baixos, paredes abarrotadas, tapetes, vasos e uma playlist pensada especialmente. Cerca de 6.000 títulos: literatura, história argentina e latino-americana em inglês, clássicos, poesia. Fundada pelo americano Geoff Hickman que veio para Buenos Aires "por amor" ao conhecer Josefina, uma poeta salteña. Um visitante no TripAdvisor: "definitivamente pare aqui depois da Feria de San Telmo."</div>
+    <div class="lib-tags">
+      <span class="tag tag-blue">Livros em inglês · 6.000 títulos</span>
+      <span class="tag tag-gray">Aceita troca de livros</span>
+    </div>
+    <div class="lib-encaixe">Domingo (San Telmo) — 3 min a pé da Plaza Dorrego, Estados Unidos 617</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Mandolina Libros</div>
+      <span class="lib-badge badge-novo">Novo</span>
+    </div>
+    <div class="lib-addr">Manuel Ugarte 2439 · Belgrano · @mandolinalibros</div>
+    <div class="lib-desc">Catálogo artesanalmente curado, com foco em editoras independentes argentinas. Mas é muito mais do que uma livraria: ciclos de leitura, oficinas, apresentações de livros, música ao vivo e uma comunidade de leitores que a converteu em ponto de encontro do bairro. Tão forte é o projeto que em abril de 2025 abriu uma segunda sede em Madri. Uma história portenha com voo próprio.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">Editoras independentes argentinas</span>
+      <span class="tag tag-amber">2ª sede em Madri · 2025</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro principal — Belgrano, 15 min de Cabify de Palermo</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Alberto Casares</div>
+      <span class="lib-badge badge-usado">Raros + 1ªs edições</span>
+    </div>
+    <div class="lib-addr">Suipacha 521 · Microcentro · referência em literatura argentina</div>
+    <div class="lib-desc">Mencionada em múltiplas fontes como o destino mais sério para quem busca edições raras de poetas e escritores argentinos. Especializada em literatura argentina, com acervo de primeiras edições e exemplares de difícil localização. Para o garimpo mais exigente do roteiro.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Primeiras edições argentinas</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — dentro do Microcentro, próximo ao Güerrín</div>
+  </div>
+
+  <div class="lib-cat-label">Livrarias secretas — a portas fechadas</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Falena</div>
+      <span class="lib-badge badge-secret">Secreta</span>
+    </div>
+    <div class="lib-addr">Charlone 201 · Chacarita · @falenalibros · seg–sex 15h–19h30</div>
+    <div class="lib-desc">Livraria mais ou menos oculta numa casona muito bonita de Chacarita. Sem janelas para a rua, horários limitados, ar místico e exclusivo. Cada livro é escolhido tanto pelo conteúdo quanto pela cuidada edição. Uma das mais recomendadas por blogs portenhos de aficionados — e muito difícil de encontrar sem indicação prévia. Se conseguirem encaixar numa tarde de semana, vale o desvio até Chacarita.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Seg–Sex 15h–19h30</span>
+      <span class="tag tag-amber">Chacarita · fora do roteiro principal</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro — Chacarita, 20 min de Cabify de Palermo</div>
+  </div>
+
+  <div class="lib-cat-label">O grande circuito de sebos — Av. Corrientes</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Av. Corrientes · entre Callao e o Obelisco</div>
+      <span class="lib-badge badge-usado">Usado + Novo</span>
+    </div>
+    <div class="lib-addr">Corrientes entre Callao e 9 de Julho · Centro · +30 livrarias em 7 quadras</div>
+    <div class="lib-desc">O passeio de sebos mais importante de Buenos Aires. Em sete quadras há mais de 30 livrarias com livros de saldo a preços muito baixos, novidades editoriais, quadrinhos, edições esgotadas, revistas, vinis e raridades. Entre as mais recomendadas: Librería Hernández (excelente catálogo, boa atenção — esquina da Uruguai), Librería de la Mancha (novidades argentinas e internacionais a bom preço) e Biblos (ensaísmo filosófico — de Nietzsche a Žižek). Também no eixo: La Revisteria Comics (quadrinhos, mangás, Marvel e DC) e sebos menores com livros a partir de preços irrisórios.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">+30 livrarias em 7 quadras</span>
+      <span class="tag tag-gray">Vinis · revistas · raridades</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — a Corrientes começa no Güerrín e segue até o Obelisco</div>
+  </div>
+
+  <div class="lib-cat-label">Feiras de livros ao ar livre · abertas todos os dias</div>
+
+  <div class="lib-feiras-grid">
+    <div class="lib-feira-card">
+      <div class="lib-feira-name">Plazoleta Santa Fe</div>
+      <div class="lib-feira-addr">Av. Santa Fe entre Uriarte e Thames · Palermo</div>
+      <div class="lib-feira-desc">A mais próxima do AirBnb de vocês. Todos os dias 10h–18h. Livros usados e novos a preços de barganha.</div>
+    </div>
+    <div class="lib-feira-card">
+      <div class="lib-feira-name">Parque Rivadavia</div>
+      <div class="lib-feira-addr">Av. Rivadavia e Beauchef · Caballito</div>
+      <div class="lib-feira-desc">A mais completa para garimpo. Livros, revistas e discos usados. Todos os dias 10h–18h. 15 min de Cabify de Palermo.</div>
+    </div>
+    <div class="lib-feira-card">
+      <div class="lib-feira-name">Parque Centenario</div>
+      <div class="lib-feira-addr">Franklin e Leopoldo Marechal · Caballito</div>
+      <div class="lib-feira-desc">Boa mistura de livros e antiguidades. Todos os dias 10h–18h.</div>
+    </div>
+    <div class="lib-feira-card">
+      <div class="lib-feira-name">Plaza Lavalle</div>
+      <div class="lib-feira-addr">Lavalle e Talcahuano · Centro</div>
+      <div class="lib-feira-desc">Perto do Teatro Colón. Seg–Sex 10h–18h. Boa opção para combinar com o roteiro do Centro.</div>
+    </div>
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Encaixadas no roteiro</div><div class="sum-value">8 livrarias</div></div>
+    <div class="sum-item"><div class="sum-label">Fora do roteiro</div><div class="sum-value">Falena · Mandolina</div></div>
+    <div class="sum-item"><div class="sum-label">Feiras ao ar livre</div><div class="sum-value">4 locais</div></div>
+    <div class="sum-item"><div class="sum-label">A mais antiga</div><div class="sum-value">Ávila · 1785</div></div>
+  </div>
+
+</section>
+
+<!-- ══════════════ PARRILLAS ══════════════ -->
+<section class="day-section" id="day-parrillas">
+  <div class="day-header-block">
+    <div class="day-date">Guia permanente</div>
+    <h2 class="day-title">Parrillas & Carne</h2>
+    <p class="day-tagline">Buenos Aires · a capital mundial da carne a fogo</p>
+  </div>
+
+  <div class="lib-intro">
+    <strong>Buenos Aires cheira a fogo, carvão e carne assada.</strong> Quatro restaurantes portenhos figuram entre os melhores do mundo no ranking World's 101 Best Steak Restaurants — com Don Julio no 1º lugar pelo terceiro ano consecutivo. Este guia organiza as melhores opções por perfil, com indicação de quais já constam do roteiro de vocês e em qual dia se encaixam melhor.
+  </div>
+
+  <div class="lib-cat-label">🌍 Elite mundial — reconhecidas internacionalmente</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Don Julio</div>
+      <span class="lib-badge badge-secret">Nº1 do mundo · Michelin ⭐</span>
+    </div>
+    <div class="lib-addr">Guatemala 4699 esq. Borges · Palermo · @parrilladonjulio</div>
+    <div class="lib-desc">Por terceiro ano consecutivo, o melhor restaurante de carne do mundo segundo o ranking World's 101 Best Steak Restaurants. Estrela Michelin desde 2023 + estrela verde por sustentabilidade. Paredes cobertas de garrafas assinadas, ambiente quente e ahumado, dedicação à qualidade artesanal e práticas sustentáveis. Reservas com 90 dias de antecedência — esgotam no mesmo dia da abertura.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Reserva com 90 dias de antecedência</span>
+      <span class="tag tag-amber">Preço alto</span>
+      <span class="tag tag-blue">Michelin ⭐ 2023–2025</span>
+    </div>
+    <div class="lib-encaixe">Não está no roteiro — exige planejamento muito antecipado. Se conseguirem reserva: qualquer noite em Palermo encaixa</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Fogón Asado</div>
+      <span class="lib-badge badge-secret">Posto 35 mundial · Michelin ⭐</span>
+    </div>
+    <div class="lib-addr">Uriarte 1423 · Palermo · @fogonasado · reserva obrigatória</div>
+    <div class="lib-desc">A portas fechadas, turno único. O Chef's Counter tem 14 passos para apenas 10 comensais. Em interação constante com os parrilleiros, explicam tudo — origem da lenha, corte, procedência animal e melhores molhos. Mais de 2 horas de imersão no asado argentino. Michelin 2024 e 2025. Menus degustação acompanhados por vinhos das adegas mais antigas da Argentina.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Reserva obrigatória</span>
+      <span class="tag tag-amber">Preço alto</span>
+      <span class="tag tag-blue">Michelin ⭐ 2024–2025</span>
+    </div>
+    <div class="lib-encaixe">Não está no roteiro — experiência de noite inteira, melhor encaixar numa noite sem outro programa</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Elena</div>
+      <span class="lib-badge badge-secret">Posto 56 mundial</span>
+    </div>
+    <div class="lib-addr">Posadas 1086 · Recoleta · Four Seasons Hotel · @elenarestaurant</div>
+    <div class="lib-desc">Ambiente de brasserie europeia com alma argentina. Programa de carnes com Black Angus argentinos, Wagyu local e cortes maturados em seco na casa. Cada filé assado à chama para realçar sabor, textura e aroma — a simplicidade é chave. Um dos melhores endereços para carne premium da cidade.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Preço alto</span>
+      <span class="tag tag-blue">Wagyu + maturação in situ</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — fica a 10 min a pé do cemitério, encaixaria perfeitamente como jantar desse dia</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Madre Rojas</div>
+      <span class="lib-badge badge-secret">Posto 47 mundial 2026</span>
+    </div>
+    <div class="lib-addr">Thames 1415 · Villa Crespo · @madrerojas · fecha segundas</div>
+    <div class="lib-desc">Neo parrilla que debutou no posto 47 do ranking mundial 2026 — terceira melhor da América Latina. Estética e espírito de bodegón clássico portenho, mas com Wagyu da Barcos & Sons, raça pioneira na Argentina. Cardápio com glossário de carnes descrevendo localização anatômica, composição muscular, produtor, alimentação e origem de cada corte. Mais de 200 rótulos de vinho em rotação constante. Mais acessível que Don Julio ou Fogón pelo nível entregue.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Preço médio-alto</span>
+      <span class="tag tag-blue">Wagyu argentino · Barcos &amp; Sons</span>
+      <span class="tag tag-coral">Fecha segundas</span>
+    </div>
+    <div class="lib-encaixe">Não está no roteiro — Villa Crespo fica entre Palermo e o Centro, 10 min de Cabify. Ótimo jantar para qualquer dia da semana</div>
+  </div>
+
+  <div class="lib-cat-label">🥩 Grandes referências portenhas — consagradas pelos locais</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">La Cabrera</div>
+      <span class="lib-badge badge-novo">Posto 64 mundial</span>
+    </div>
+    <div class="lib-addr">Cabrera 5099/5127 · Palermo · @lacabrera · abre todos os dias</div>
+    <div class="lib-desc">Uma das parrillas mais famosas de Buenos Aires — também presente em 13 países incluindo Filipinas, Madri, Barcelona e Miami. Figurou entre os melhores 50 restaurantes da América Latina. Para quem chega sem reserva: a lista de espera começa com espumante e empanadas de cortesia. Happy hour com 40% de desconto a partir das 18h — a melhor forma de encaixar sem reserva e sem pagar preço cheio.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Preço médio-alto</span>
+      <span class="tag tag-teal">Happy hour 40% off às 18h</span>
+      <span class="tag tag-gray">Reserva recomendada com alguns dias</span>
+    </div>
+    <div class="lib-encaixe">Não está no roteiro — mas é alternativa de alto nível em qualquer noite de Palermo, especialmente no happy hour das 18h</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">La Brigada ✅</div>
+      <span class="lib-badge badge-usado">No roteiro · Sábado</span>
+    </div>
+    <div class="lib-addr">Estados Unidos 465 · San Telmo · @parrillalabrigada · fecha segundas</div>
+    <div class="lib-desc">Estabelecida em 1992, é considerada um emblema portenho e templo da carne e do vinho. Recebeu visitantes de todo o mundo por mais de 30 anos sem perder a qualidade consistente e a autêntica experiência de asado argentino. A carne cortada com colher na mesa é o ritual mais comentado. Decoração de futebol, tango de fundo. ~30–40 euros por pessoa com entrada, prato e vinho.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">✅ Já está no roteiro</span>
+      <span class="tag tag-coral">Sábado 29/08 · jantar 20h</span>
+      <span class="tag tag-amber">Reservar: +54 11 4361-5557</span>
+    </div>
+    <div class="lib-encaixe">Sábado (San Telmo) — jantar às 20h, seguido do Torquato Tasso a 7 min a pé</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Minga Parrilla ✅</div>
+      <span class="lib-badge badge-usado">No roteiro · Domingo</span>
+    </div>
+    <div class="lib-addr">Costa Rica 4528 · Palermo Soho · @mingaparrilla · abre todos os dias</div>
+    <div class="lib-desc">⭐ 4,6 com quase 11 mil avaliações. O lomo "a punto" é o prato mais pedido — entre mal passado e ao ponto, resultado excepcional. Carta de vinhos muito bem curada com garçons que fazem recomendações certeiras. Um visitante foi dois dias seguidos. O encerramento perfeito para a semana em Buenos Aires.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">✅ Já está no roteiro</span>
+      <span class="tag tag-coral">Domingo 31/08 · jantar de encerramento</span>
+      <span class="tag tag-amber">Reservar: +54 11 8031-0574</span>
+    </div>
+    <div class="lib-encaixe">Domingo (Palermo) — jantar de encerramento da viagem</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Lo de Jesús</div>
+      <span class="lib-badge badge-misto">Clássico · 1953</span>
+    </div>
+    <div class="lib-addr">Gurruchaga 1406 · Palermo · @lodejsusbuenosaires</div>
+    <div class="lib-desc">Clássico palermitano desde 1953 — parte fundamental do bairro. Atualmente aposta nas carnes maturadas: T-bone e Tomahawk são os imperdíveis. Tem uma adega integrada chamada La Malbequería onde o cliente escolhe o vinho e não paga taxa de rolha para tomar durante a refeição — diferencial raro e muito bem avaliado. Considerado por conhecedores o substituto mais honesto do Don Julio: qualidade próxima, sem a espera e sem o preço inflado.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Adega integrada sem rolha</span>
+      <span class="tag tag-gray">Preço médio</span>
+      <span class="tag tag-blue">Carnes maturadas · T-bone · Tomahawk</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — 5 min a pé da flanada, ótimo para jantar após o Virasoro Bar ou antes</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">La Carnicería</div>
+      <span class="lib-badge badge-misto">Autoral · fazenda própria</span>
+    </div>
+    <div class="lib-addr">Thames 2317 · Palermo Viejo · @lacarniceriapalermo · só jantar seg–sex</div>
+    <div class="lib-desc">Fundada por Germán Sitz e Pedro Peña — dos mesmos donos do Niño Gordo e do Chori. Reinventa o asado com preparações criativas e rebeldes: carne de pastagem da fazenda própria, provoleta defumada com pêra, ossobuco, cortes defumados. Assento em frente à grelha onde os cozinheiros trabalham visivelmente. Tutano com pão caseiro na entrada e bife de costela são as pedidas mais memoráveis.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Só jantar · seg–sex</span>
+      <span class="tag tag-blue">Reservar: WhatsApp +54 11 3053-8514</span>
+      <span class="tag tag-gray">Preço médio-alto</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — Thames 2317, dentro do bairro da flanada; alternativa ao Lo de Jesús para a noite</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">El Preferido de Palermo</div>
+      <span class="lib-badge badge-novo">Michelin 2025</span>
+    </div>
+    <div class="lib-addr">Borges 2108 · Palermo · @elpreferidopalermo · abre todos os dias</div>
+    <div class="lib-desc">Bistrô argentino moderno figurando na seleção da Guia Michelin 2025. Milanesa napolitana unanimemente elogiada, bife de chorizo seco e maturado, batatas fritas com fãs fervorosos. Serviço bilíngue e atencioso. Melhor custo-benefício de Palermo para o nível entregue. Reservar em elpreferido.meitre.com.</div>
+    <div class="lib-tags">
+      <span class="tag tag-blue">Michelin 2025</span>
+      <span class="tag tag-teal">Melhor custo-benefício de Palermo</span>
+      <span class="tag tag-gray">Preço médio</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — alternativa mais acessível para jantar no bairro; ou quinta se passarem por Palermo</div>
+  </div>
+
+  <div class="lib-cat-label">🔥 Parrillas com identidade própria — fora do circuito óbvio</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Corte Comedor</div>
+      <span class="lib-badge badge-misto">Açougue próprio · chorizos autorais</span>
+    </div>
+    <div class="lib-addr">Olazábal 1391 · Belgrano · @cortecomedor · abre todos os dias</div>
+    <div class="lib-desc">À frente estão o cozinheiro Santiago Garat e o charcuteiro Cesar Sagario. Parrilla com açougue próprio, aberta desde 2018. Ampla, luminosa e moderna — ótima para grupos. A carne é de pastagem e qualidade superior, mas o grande destaque são os chorizos autorais pela variedade e originalidade: de frango com curry verde e gengibre, de jalapeño com provolone, italiano puro de porco com sementes de funcho. Uma das mais interessantes de Belgrano.</div>
+    <div class="lib-tags">
+      <span class="tag tag-gray">Preço médio</span>
+      <span class="tag tag-blue">Chorizos autorais · destaque absoluto</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro — Belgrano, 15 min de Cabify de Palermo; vale um desvio numa tarde/noite livre</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Happening</div>
+      <span class="lib-badge badge-misto">60 anos · vista do rio</span>
+    </div>
+    <div class="lib-addr">Av. Rafael Obligado 7030 · Costanera Norte · e Puerto Madero · @happeningrestaurant</div>
+    <div class="lib-desc">Herdeiro dos míticos carrinhos da Costanera — Osvaldo Brucco recebeu o carrinho nº 55 como pagamento de uma dívida nos anos 1960 e construiu um ícone. O local luminoso com vista para o Rio da Prata foi inaugurado em 1977 — Moria Casán foi à abertura com um tigre filhote. Completou 60 anos em 2025. Funde autenticidade da parrilla com cozinha internacional moderna. Duas sedes: Costanera Norte e Puerto Madero.</div>
+    <div class="lib-tags">
+      <span class="tag tag-blue">60 anos · 2025</span>
+      <span class="tag tag-teal">Vista para o Rio da Prata</span>
+      <span class="tag tag-gray">Preço médio-alto</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Puerto Madero) — a sede de Puerto Madero encaixaria após o passeio na orla, como alternativa ao jantar em San Telmo</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">El Obrero</div>
+      <span class="lib-badge badge-feira">O mais autêntico · 1954</span>
+    </div>
+    <div class="lib-addr">Caffarena 64 · La Boca · sem reservas · chegar e esperar</div>
+    <div class="lib-desc">Bodegón histórico frequentado por portenhos de La Boca, artistas e intelectuais desde 1954. Sem pretensão turística, sem cardápio em inglês, sem reservas. O ambiente é o de um clube de bairro que nunca quis ser restaurante. Indicado por múltiplos blogs portenhos como a experiência mais autêntica para quem quer comer bem sem pagar preço de Palermo. La Boca exige cuidado com segurança fora do perímetro turístico.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Preço baixo-médio</span>
+      <span class="tag tag-gray">Sem reservas · por ordem de chegada</span>
+      <span class="tag tag-amber">⚠ Segurança em La Boca fora do perímetro</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro — se incluírem La Boca, El Obrero é o almoço natural depois do Caminito</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Lo de Charly</div>
+      <span class="lib-badge badge-feira">24 horas · raridade</span>
+    </div>
+    <div class="lib-addr">Villa Ortúzar · @lodecharly · aberto 24h · sem reservas</div>
+    <div class="lib-desc">Um clássico de Villa Ortúzar cuja reputação transcendeu as fronteiras do bairro. A grande raridade: está aberta 24 horas — única parrilla da cidade nesse formato. Para quem quiser uma parrilla portenha de madrugada após um show ou um programa cultural tardio.</div>
+    <div class="lib-tags">
+      <span class="tag tag-coral">Aberto 24h — único na cidade</span>
+      <span class="tag tag-gray">Preço médio · sem reservas</span>
+    </div>
+    <div class="lib-encaixe">Qualquer noite — especialmente após o Torquato Tasso no sábado ou o Virasoro na sexta, se ainda houver apetite</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">El Pobre Luis</div>
+      <span class="lib-badge badge-misto">Argentino-uruguaio</span>
+    </div>
+    <div class="lib-addr">Arribeños 2393 · Belgrano · @elpobreluisbuenosaires</div>
+    <div class="lib-desc">Especialidades uruguaias como as pamplonas (arrolado de frango, vaca, terneiro ou porco recheado de queijo e verduras) ao lado do melhor do asado argentino. As mollejas são unanimemente imperdíveis. Muito frequentado por portenhos de Belgrano, clima de bodegón de bairro — sem o verniz turístico de Palermo.</div>
+    <div class="lib-tags">
+      <span class="tag tag-gray">Preço médio</span>
+      <span class="tag tag-blue">Mollejas + pamplonas uruguaias</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro — Belgrano, combinaria com uma visita à Mandolina Libros na mesma tarde</div>
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Já no roteiro</div><div class="sum-value">La Brigada · Minga</div></div>
+    <div class="sum-item"><div class="sum-label">Melhor p/ Palermo</div><div class="sum-value">Lo de Jesús · La Carnicería</div></div>
+    <div class="sum-item"><div class="sum-label">Melhor p/ Recoleta</div><div class="sum-value">Elena</div></div>
+    <div class="sum-item"><div class="sum-label">Nº1 do mundo</div><div class="sum-value">Don Julio · 90 dias antes</div></div>
+  </div>
+
+</section>
+<!-- ══════════════ MUSEUS ══════════════ -->
+<section class="day-section" id="day-museus">
+  <div class="day-header-block">
+    <div class="day-date">Guia permanente</div>
+    <h2 class="day-title">Museus, Bibliotecas & Cultura</h2>
+    <p class="day-tagline">Do circuito convencional aos espaços insólitos que os guias turísticos ignoram</p>
+  </div>
+
+  <div class="lib-intro">
+    Buenos Aires propõe um circuito oficial de espaços culturais — mas a cidade esconde também <strong>museus fundados por colecionadores obcecados, edifícios que guardam segredos que quase ninguém suspeita e bibliotecas que definiram o pensamento latinoamericano.</strong> Este guia organiza tudo por categoria, com indicação de encaixe no roteiro de vocês.
+  </div>
+
+  <div class="lib-cat-label">🏛️ Grandes centros culturais — âncoras da vida cultural portenha</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Palacio Libertad (ex-CCK)</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Sarmiento 151 · Microcentro · @palaciolibertad · qua–dom 14h–21h</div>
+    <div class="lib-desc">Inaugurado como Palácio dos Correios e Telégrafos (1911–1928), transformado no maior centro cultural da América Latina. A "Baleia Azul" é o Auditório Nacional com capacidade para mais de 1.700 pessoas e um órgão histórico de 3.800 tubos. A Cúpula de vidro e aço a 63 metros oferece vista panorâmica de Buenos Aires. Programação permanente de concertos, dança, teatro, exposições e cinema — tudo gratuito. Visitas guiadas gratuitas qui–dom às 14h30 e 16h. Nota: rebatizado de Palacio Libertad em 2024 pelo governo Milei — o espaço em si não mudou.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-blue">Visitas guiadas qui–dom 14h30 e 16h</span>
+      <span class="tag tag-gray">Agenda: cck.gob.ar</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — flanada pelo Microcentro, a 5 min a pé do Obelisco</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Biblioteca Nacional Mariano Moreno</div>
+      <span class="lib-badge badge-teal">Gratuita</span>
+    </div>
+    <div class="lib-addr">Agüero 2502 · Recoleta · @BNMMArgentina · seg–sex 9h–21h · sáb 12h–19h · fecha dom</div>
+    <div class="lib-desc">Fundada em 1810 por Mariano Moreno — testemunha da Revolução de Maio. Quase um milhão de manuscritos, livros, documentos, fotografias, mapas, partituras e gravações. Maior arquivo de jornais da América Latina. O tesouro guarda 11.000 volumes dos séculos XVI e XVII, 21 incunábulos do século XV e uma página da Bíblia de Gutenberg. Edifício brutalista de Clorindo Testa (1992) — obra arquitetônica em si, com sala de leitura no 5º andar com vista privilegiada sobre Recoleta. Exposições temporárias regulares abertas ao público.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuita</span>
+      <span class="tag tag-coral">Fecha domingos e feriados</span>
+      <span class="tag tag-blue">Agenda: bn.gov.ar</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — o Invernadero fica nos jardins do mesmo edifício; visita antes ou depois do bar</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Centro Cultural Recoleta ✅</div>
+      <span class="lib-badge badge-usado">No roteiro · Quinta</span>
+    </div>
+    <div class="lib-addr">Junín 1930 · Recoleta · @ccrecoleta · qua–sex 14h–21h · sáb–dom 11h–21h · fecha seg e ter</div>
+    <div class="lib-desc">Convento histórico do século XVIII convertido em espaço cultural. Programação permanente de artes visuais, dança, teatro, música e performance — toda gratuita. O pátio interno é um dos mais bonitos do bairro. Para saber o que está em cartaz em agosto: ccrecoleta.org.ar/programacion.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">✅ Já está no roteiro · Quinta</span>
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha seg e ter</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — ao lado da Basílica, dentro do roteiro da tarde</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Centro Cultural Borges</div>
+      <span class="lib-badge badge-novo">Pago</span>
+    </div>
+    <div class="lib-addr">Viamonte 525 · Microcentro · dentro das Galerías Pacífico · @ccborges</div>
+    <div class="lib-desc">Instalado nas Galerías Pacífico — já no roteiro de sábado. Exposições de artes visuais, espetáculos de tango e dança contemporânea num espaço histórico. Um dos poucos centros culturais com programação estável de tango para portenhos — sem o apelo turístico dos shows comerciais.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Pago — depende do evento</span>
+      <span class="tag tag-blue">Agenda: ccborges.org.ar</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Microcentro) — dentro das Galerías Pacífico, já no roteiro da flanada</div>
+  </div>
+
+  <div class="lib-cat-label">🎨 Museus de arte — além do MALBA e do Belas Artes</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">MALBA ✅</div>
+      <span class="lib-badge badge-usado">No roteiro · Sexta</span>
+    </div>
+    <div class="lib-addr">Av. Figueroa Alcorta 3415 · Palermo · @malba · qua 11h–20h · qui–dom 12h–20h · fecha ter</div>
+    <div class="lib-desc">Museu de Arte Latino-Americana de Buenos Aires. Frida Kahlo, Rivera, Botero, Xul Solar e extensa coleção de arte latino-americana contemporânea. Exposições temporárias de alto nível. Tem café e cinema dentro.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">✅ Já está no roteiro · Sexta</span>
+      <span class="tag tag-amber">Pago ~USD 8</span>
+      <span class="tag tag-coral">Fecha terças</span>
+    </div>
+    <div class="lib-encaixe">Sexta (Palermo) — após o almoço na La Dorita</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Nacional de Belas Artes ✅</div>
+      <span class="lib-badge badge-usado">No roteiro · Quinta</span>
+    </div>
+    <div class="lib-addr">Av. del Libertador 1473 · Recoleta · @museobelasartes · qua–sex 11h–19h30 · sáb 10h–19h30 · fecha seg</div>
+    <div class="lib-desc">Uma das maiores coleções da América Latina: Goya, Van Gogh, Rembrandt, Rodin. Três andares com acervo permanente e exposições temporárias. Gratuito.</div>
+    <div class="lib-tags">
+      <span class="tag tag-sage">✅ Já está no roteiro · Quinta</span>
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha segundas</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — tarde após o almoço na Parolaccia</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">MAMBA — Museu de Arte Moderna</div>
+      <span class="lib-badge badge-teal">Gratuito quartas</span>
+    </div>
+    <div class="lib-addr">Av. San Juan 350 · San Telmo · @museoartemodernoba · ter–dom 11h–19h · fecha seg</div>
+    <div class="lib-desc">Arte moderno e contemporâneo argentino e internacional — Antonio Berni, Xul Solar, Yves Klein, Picasso, Jackson Pollock. Exposições temporárias que mudam regularmente. Instalado num edifício industrial tombado de 1918 em San Telmo. Gratuito às quartas.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito às quartas</span>
+      <span class="tag tag-blue">Pago outros dias</span>
+      <span class="tag tag-coral">Fecha segundas</span>
+    </div>
+    <div class="lib-encaixe">Domingo (San Telmo) — a 10 min a pé da Plaza Dorrego, encaixa no bloco da tarde</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Xul Solar</div>
+      <span class="lib-badge badge-novo">Pago</span>
+    </div>
+    <div class="lib-addr">Laprida 1212 · Recoleta · @museoxulsolar · ter–sex 12h–20h · sáb 12h–19h · fecha seg e dom</div>
+    <div class="lib-desc">Instalado na antiga casa do artista — amigo íntimo de Borges. Exibe peças escolhidas pelo próprio Xul Solar, objetos de sua coleção pessoal e biblioteca de 3.500 livros. Para quem tem interesse na Buenos Aires literária e intelectual do século XX, é visita essencial. Visitas guiadas ter e qui às 16h e sáb às 15h30.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Pago</span>
+      <span class="tag tag-coral">Fecha seg e dom</span>
+      <span class="tag tag-blue">Guia ter/qui 16h · sáb 15h30</span>
+    </div>
+    <div class="lib-encaixe">Quinta (Recoleta) — 15 min a pé do cemitério; alternativa ao 2º museu da tarde</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Fernández Blanco — Palácio Noel</div>
+      <span class="lib-badge badge-teal">Gratuito quartas</span>
+    </div>
+    <div class="lib-addr">Suipacha 1422 · Retiro · @museofernandezblanco · qua–dom 13h–19h · fecha seg e ter</div>
+    <div class="lib-desc">Palácio neocolonial com jardins — um dos edifícios mais belos da cidade. Coleção de arte colonial hispano-americana, plataria, mobiliário e arte sacra dos séculos XVI–XIX. Programação de concertos de câmara em alguns fins de semana. A 5 minutos a pé do Teatro Colón. Gratuito às quartas.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito quartas</span>
+      <span class="tag tag-blue">Concertos de câmara alguns fds</span>
+      <span class="tag tag-coral">Fecha seg e ter</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Centro) — 5 min a pé do Teatro Colón, encaixaria antes ou depois da flanada</div>
+  </div>
+
+  <div class="lib-cat-label">🔍 Museus insólitos — as descobertas que os guias turísticos ignoram</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Penitenciário Argentino</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Humberto 1º 378 · San Telmo · seg–sex 10h–17h · sáb 10h–13h · fecha dom</div>
+    <div class="lib-desc">A poucos quarteirões da Plaza Dorrego, atrás de uma fachada de pedra sem pistas do que guarda. O edifício foi construído pelos jesuítas em 1735 — serviu de convento, hospital, depósito de pólvora e, durante quase um século, foi a cadeia de mulheres de Buenos Aires. Hoje seus claustros com grades de ferro abrigam roupas listradas, grilhões, uniformes, prontuários criminológicos e objetos das unidades penitenciárias federais. Uma das visitas mais surpreendentes de San Telmo.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha domingos</span>
+      <span class="tag tag-amber">Sáb só até 13h</span>
+    </div>
+    <div class="lib-encaixe">Domingo (San Telmo) — a 5 min da Plaza Dorrego; encaixa no bloco da tarde após a feira</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Palácio das Águas Corrientes</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Riobamba 750 · Balvanera · seg–sex 9h–13h · gratuito</div>
+    <div class="lib-desc">O que parece um palácio é na verdade um tanque de água. Construído entre 1887 e 1894, a fachada está coberta por 300.000 peças de terracota esmaltada importadas da Royal Doulton (Londres) e Burmantofts (Leeds). O térreo é uma central de atendimento; para o museu sobe-se ao 1º andar: fascinante história do saneamento de Buenos Aires com antigas privadas, bacias, bidês e torneiras. A casa de bombas preservada com os enormes canos de 60 cm de diâmetro é uma viagem ao passado industrial argentino. Completamente gratuito, sem reserva.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito · sem reserva</span>
+      <span class="tag tag-amber">Só seg–sex 9h–13h</span>
+      <span class="tag tag-blue">Balvanera · 15 min de Cabify de Palermo</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro principal — desvio deliberado, melhor numa manhã de semana</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">MUNTREF — Museu da Imigração</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Av. Antártida Argentina s/n · Retiro · @muntref · ter–dom 11h–18h · fecha seg</div>
+    <div class="lib-desc">Instalado no Hotel de Imigrantes (1906) — o edifício onde milhões de europeus foram processados ao chegar à Argentina entre 1906 e 1953. Para um país formado fundamentalmente por imigração italiana, espanhola, árabe e judaica, é um dos museus de maior ressonância histórica da cidade. Muito recomendado por blogs portenhos como visita essencial fora do circuito turístico. A 10 minutos a pé do Centro histórico.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha segundas</span>
+      <span class="tag tag-blue">Retiro · próximo à flanada do sábado</span>
+    </div>
+    <div class="lib-encaixe">Sábado (Retiro) — na Plaza San Martín, onde termina a flanada; encaixa antes de Cabify para Puerto Madero</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Histórico Nacional</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Defensa 1600 · San Telmo · @museohistoriconacional · qua–dom 11h–19h · fecha seg e ter</div>
+    <div class="lib-desc">Documentos, objetos e coleções que percorrem a história argentina desde a independência até o século XX. Instalado numa casa histórica no coração de San Telmo. Programação cultural regular com atividades educativas.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha seg e ter</span>
+    </div>
+    <div class="lib-encaixe">Domingo (San Telmo) — na Defensa, no caminho da feria; parada natural no percurso</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu do Che Guevara</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Caballito · fundado em 1996 por Eladio González</div>
+    <div class="lib-desc">Primeiro museu do continente dedicado ao revolucionário argentino. Fundado a partir de uma história improvável que começou com uma doação de sangue em Cuba. Coleção inclui cartas, medalhas, terra do lugar onde o Che foi assassinado na Bolívia e uma réplica da moto da viagem lendária. Uma estátua em escala real no centro do espaço. O tipo de lugar que existe porque alguém quis que existisse — sem patrocínio, sem institucionalização.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-amber">Caballito · fora do roteiro principal</span>
+    </div>
+    <div class="lib-encaixe">Fora do roteiro — Caballito, 20 min de Cabify de Palermo; desvio deliberado para quem tem interesse</div>
+  </div>
+
+  <div class="lib-cat-label">⚽ Museus esportivos — para quem tiver interesse</div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu da Paixão Boquense</div>
+      <span class="lib-badge badge-novo">Pago</span>
+    </div>
+    <div class="lib-addr">Brandsen 805 · La Boca · @museoboquense · todos os dias 10h–18h</div>
+    <div class="lib-desc">Mais de 100 anos de história do Boca Juniors de forma autoguiada. Troféus, infográficos audiovisuais com os ídolos do clube, cinema 360 e projeções. Para quem tiver interesse num jogo na Bombonera, combinar com a visita ao museu é o encaixe natural.</div>
+    <div class="lib-tags">
+      <span class="tag tag-amber">Pago</span>
+      <span class="tag tag-blue">La Boca · todos os dias 10h–18h</span>
+    </div>
+    <div class="lib-encaixe">La Boca — se incluída no roteiro, encaixa com o Caminito e El Obrero no mesmo dia</div>
+  </div>
+
+  <div class="lib-card">
+    <div class="lib-card-header">
+      <div class="lib-name">Museu Quinquela Martín</div>
+      <span class="lib-badge badge-teal">Gratuito</span>
+    </div>
+    <div class="lib-addr">Av. Don Pedro de Mendoza 1835 · La Boca · @museoqa · ter–dom 11h15–18h · fecha seg</div>
+    <div class="lib-desc">A mais ampla coleção de óleos de Benito Quinquela Martín — o pintor mais associado à identidade visual de La Boca. Fundado em 1938 numa das suas próprias construções. Gratuito. Ícone cultural do bairro — complementa o Caminito com uma camada artística real.</div>
+    <div class="lib-tags">
+      <span class="tag tag-teal">Gratuito</span>
+      <span class="tag tag-coral">Fecha segundas</span>
+    </div>
+    <div class="lib-encaixe">La Boca — se incluída no roteiro, a 2 min do Caminito</div>
+  </div>
+
+  <div class="day-summary">
+    <div class="sum-item"><div class="sum-label">Já no roteiro</div><div class="sum-value">MALBA · Belas Artes · CCRecoleta</div></div>
+    <div class="sum-item"><div class="sum-label">Encaixe sábado</div><div class="sum-value">CCK · Fernández Blanco · MUNTREF</div></div>
+    <div class="sum-item"><div class="sum-label">Encaixe domingo</div><div class="sum-value">MAMBA · Penitenciário · Histórico</div></div>
+    <div class="sum-item"><div class="sum-label">Gratuitos</div><div class="sum-value">12 de 14 espaços</div></div>
+  </div>
+
+</section>
 </main>
 
 <script>
