@@ -7,16 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #F5F0E8;
-  --ink: #1A1714;
-  --rust: #B84B2A;
-  --sage: #4A6741;
-  --gold: #C49A3C;
-  --dust: #8C7E6E;
-  --paper: #EDE7D9;
-  --light: #FAF7F2;
-  --border: rgba(26,23,20,0.12);
-  --card-bg: rgba(255,255,255,0.7);
+  --cream: #F4F8FC;        /* branco levemente azulado — fundo */
+  --ink: #16324F;          /* azul-marinho profundo — texto/painéis */
+  --rust: #4A90C2;         /* celeste da bandeira — acento principal */
+  --sage: #2E6A98;         /* celeste mais profundo — cultura */
+  --gold: #E8A200;         /* dourado do Sol de Maio — destaques */
+  --dust: #6B8299;         /* azul-acinzentado — texto secundário */
+  --paper: #E4EEF6;        /* celeste muito claro — blocos */
+  --light: #FBFDFE;        /* branco quase puro */
+  --border: rgba(22,50,79,0.14);
+  --card-bg: rgba(255,255,255,0.78);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,11 +41,12 @@ body {
 .site-header::before {
   content: '';
   position: absolute;
-  top: -40px; right: -40px;
+  top: -50px; right: -50px;
   width: 200px; height: 200px;
   border-radius: 50%;
-  background: var(--rust);
-  opacity: 0.15;
+  background: var(--gold);
+  opacity: 0.28;
+  box-shadow: 0 0 60px 20px rgba(232,162,0,0.25);
 }
 .header-eyebrow {
   font-family: 'DM Sans', sans-serif;
@@ -204,11 +205,11 @@ body {
   border: 2px solid var(--border);
   z-index: 1;
 }
-.tl-dot.food    { border-color: var(--sage);  background: #E8F0E7; }
-.tl-dot.culture { border-color: #5B7FB5;      background: #EBF0F8; }
+.tl-dot.food    { border-color: var(--sage);  background: #DCEAF5; }
+.tl-dot.culture { border-color: #4A90C2;      background: #E1EFF9; }
 .tl-dot.transit { border-color: var(--dust);  background: var(--cream); }
-.tl-dot.night   { border-color: var(--rust);  background: #F5EAE6; }
-.tl-dot.free    { border-color: var(--gold);  background: #F8F1E0; }
+.tl-dot.night   { border-color: var(--gold);  background: #FBEFCF; }
+.tl-dot.free    { border-color: var(--gold);  background: #FBEFCF; }
 
 /* TRANSIT */
 .tl-transit {
@@ -280,12 +281,12 @@ body {
   padding: 3px 9px;
   border-radius: 100px;
 }
-.tag-teal   { background: #E1F5EE; color: #085041; }
-.tag-blue   { background: #E6F0FA; color: #1A4A7A; }
-.tag-amber  { background: #FDF0D8; color: #7A4A08; }
-.tag-coral  { background: #FAECE7; color: #7A2A10; }
+.tag-teal   { background: #DDEEF8; color: #1A5A86; }
+.tag-blue   { background: #E1EFF9; color: #16324F; }
+.tag-amber  { background: #FBEFCF; color: #8A6100; }
+.tag-coral  { background: #FCE7C4; color: #92590A; }
 .tag-gray   { background: #F0EDE8; color: #4A4540; }
-.tag-sage   { background: #E8F0E7; color: #2A5025; }
+.tag-sage   { background: #DDEEF8; color: #1F5A82; }
 
 /* RESERVA BADGE */
 .reserva-badge {
@@ -308,7 +309,7 @@ body {
 .alt-block {
   margin: 0 1rem 0.85rem;
   padding: 0.65rem 0.85rem;
-  background: #F8F4EC;
+  background: #FBF3DC;
   border-left: 3px solid var(--gold);
   border-radius: 0 8px 8px 0;
   font-size: 12.5px;
@@ -327,11 +328,11 @@ body {
 .nota-block {
   margin: 0 1rem 0.85rem;
   padding: 0.65rem 0.85rem;
-  background: #EEF4EE;
+  background: #E1EFF9;
   border-left: 3px solid var(--sage);
   border-radius: 0 8px 8px 0;
   font-size: 12.5px;
-  color: #2A4028;
+  color: #1A4463;
   font-style: italic;
 }
 
@@ -429,11 +430,11 @@ a.tel:hover { text-decoration: underline; }
 .badge-usado { background: #EBF0F8; color: #1A4A7A; }
 .badge-misto { background: #F5F0E8; color: #6A5A48; }
 .badge-feira { background: #FDF0D8; color: #7A4A08; }
-.badge-secret { background: #FAECE7; color: #7A2A10; }
+.badge-secret { background: #FCE7C4; color: #92590A; }
 .lib-addr { font-size: 12px; color: var(--dust); margin-bottom: 6px; }
 .lib-desc { font-size: 13px; color: #3A3530; line-height: 1.65; margin-bottom: 8px; }
 .lib-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
-.lib-encaixe { font-size: 12px; color: var(--sage); font-weight: 500; padding: 4px 0 0; border-top: 1px solid var(--border); margin-top: 6px; }
+.lib-encaixe { font-size: 12px; color: var(--sage); font-weight: 600; padding: 4px 0 0; border-top: 1px solid var(--border); margin-top: 6px; }
 .lib-encaixe::before { content: '📍 '; }
 .lib-intro { background: var(--ink); color: var(--cream); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 1.25rem; font-size: 13.5px; line-height: 1.65; }
 .lib-intro strong { color: var(--gold); }
@@ -450,8 +451,8 @@ a.tel:hover { text-decoration: underline; }
 .dist-row:last-child{border-bottom:none;}
 .dist-lbl{color:var(--dust);}
 .dist-val{font-weight:500;color:var(--ink);text-align:right;}
-.b-walk{background:#E8F0E7;color:#2A5025;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
-.b-car{background:#FDF0D8;color:#7A4A08;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
+.b-walk{background:#DDEEF8;color:#1A5A86;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
+.b-car{background:#FBEFCF;color:#8A6100;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
 @media(max-width:480px){.dist-grid{grid-template-columns:1fr;}}
 
 .fx-wrap{max-width:440px;margin:0 auto;}
@@ -476,7 +477,7 @@ a.tel:hover { text-decoration: underline; }
 .fx-quick-peso{font-size:13px;color:var(--dust);}
 .fx-quick-real{font-size:1rem;font-weight:600;color:var(--ink);}
 .fx-note{font-size:12px;color:var(--dust);line-height:1.6;margin-top:1.2rem;padding:.9rem 1rem;background:var(--paper);border-radius:10px;border-left:3px solid var(--gold);}
-.fx-note strong{color:#7A4A08;}
+.fx-note strong{color:#8A6100;}
 </style>
 </head>
 <body>
@@ -568,10 +569,10 @@ a.tel:hover { text-decoration: underline; }
     </div>
   </div>
   <div class="legend">
-    <div class="leg-item"><div class="leg-dot" style="background:#4A6741"></div> Alimentação</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#5B7FB5"></div> Cultura & passeio</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#4A90C2"></div> Alimentação</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#2E6A98"></div> Cultura & passeio</div>
     <div class="leg-item"><div class="leg-dot" style="background:#8C7E6E"></div> Deslocamento</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#B84B2A"></div> Noite</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#E8A200"></div> Noite</div>
   </div>
 
   <div class="timeline">
@@ -974,8 +975,36 @@ a.tel:hover { text-decoration: underline; }
       <div class="tl-dot transit"></div>
       <div class="tl-transit">
         <span class="tl-transit-icon">🚶</span>
-        <span class="tl-transit-desc">Descendo em direção a Retiro · Av. Alvear é o início do circuito dos palácios</span>
-        <span class="tl-transit-time">~15 min / 1,1km</span>
+        <span class="tl-transit-desc">Pela Av. del Libertador · o Palácio Errázuriz fica a 400m do MNBA</span>
+        <span class="tl-transit-time">~5 min</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot culture"></div>
+      <div class="tl-card">
+        <div class="card-header">
+          <div class="card-title">Museu de Arte Decorativo · Palácio Errázuriz Alvear</div>
+          <span class="card-time">~16h</span>
+        </div>
+        <div class="card-addr">Av. del Libertador 1902 · gratuito · o palácio que se pode entrar</div>
+        <div class="card-body">O palácio que responde exatamente ao seu objetivo do dia: entrar num dos grandes palácios franceses da região — não só ver a fachada. Construído entre 1911 e 1917 por René Sergent (o mesmo arquiteto de vários palácios da elite portenha), em neoclássico francês, foi a residência de Matías Errázuriz e Josefina de Alvear — a mesma linhagem que nomeia a Av. Alvear. Funciona como casa-museu: percorre-se os salões originais com a coleção da família — esculturas de Rodin, tapeçarias do século XVI, um El Greco, um relógio que foi presente de casamento de Luís XVI e Maria Antonieta. Materiais todos trazidos da Europa prontos para instalação. O café Croque Madame funciona no jardim.</div>
+        <div class="tags">
+          <span class="tag tag-teal">Gratuito · bono contribución</span>
+          <span class="tag tag-blue">Qua–Dom 13h–19h · entrada até 18h30</span>
+          <span class="tag tag-coral">Fecha seg e ter</span>
+          <span class="tag tag-gray">Casa-museu · entra-se nos salões</span>
+        </div>
+        <div class="nota-block">Visitas guiadas ao palácio também aos domingos às 16h. Na quinta, a visita livre percorre os salões principais. Reserve 45 min a 1h. É a materialização do "entrar num palácio" que a flanada por Alvear e Arroyo só permite ver por fora.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot transit"></div>
+      <div class="tl-transit">
+        <span class="tl-transit-icon">🚶</span>
+        <span class="tl-transit-desc">Descendo a Av. del Libertador e Av. Alvear · início do circuito dos palácios</span>
+        <span class="tl-transit-time">~12 min / 900m</span>
       </div>
     </div>
 
@@ -984,7 +1013,7 @@ a.tel:hover { text-decoration: underline; }
       <div class="tl-card">
         <div class="card-header">
           <div class="card-title">Flanada arquitetônica · Alvear + Arroyo</div>
-          <span class="card-time">~16h15</span>
+          <span class="card-time">~17h</span>
         </div>
         <div class="card-addr">Av. Alvear → Plazoleta Pellegrini → Calle Arroyo · o coração do dia</div>
         <div class="card-body">O trecho mais parisiense de Buenos Aires — palácios franceses do início do século XX, embaixadas, galerias de arte e a rua mais bonita da cidade. Percurso livre, sem sequência obrigatória. Os palácios são só exterior; os cafés e galerias abaixo ficam ao longo do caminho para parar quando quiserem.</div>
