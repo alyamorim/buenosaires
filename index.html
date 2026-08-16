@@ -453,6 +453,30 @@ a.tel:hover { text-decoration: underline; }
 .b-walk{background:#E8F0E7;color:#2A5025;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
 .b-car{background:#FDF0D8;color:#7A4A08;font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;}
 @media(max-width:480px){.dist-grid{grid-template-columns:1fr;}}
+
+.fx-wrap{max-width:440px;margin:0 auto;}
+.fx-rate-card{background:var(--ink);color:var(--cream);border-radius:16px;padding:1.4rem 1.3rem;margin-bottom:1.25rem;text-align:center;position:relative;overflow:hidden;}
+.fx-rate-card::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:var(--gold);opacity:.13;}
+.fx-rate-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.fx-rate-value{font-family:'Playfair Display',serif;font-size:2rem;line-height:1.1;margin-bottom:.3rem;}
+.fx-rate-sub{font-size:12px;color:rgba(245,240,232,.6);}
+.fx-rate-status{font-size:11px;margin-top:.6rem;padding:3px 10px;border-radius:100px;display:inline-block;background:rgba(245,240,232,.1);}
+.fx-conv{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.1rem;margin-bottom:1.1rem;}
+.fx-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem;}
+.fx-row:last-child{margin-bottom:0;}
+.fx-flag{font-size:1.5rem;flex-shrink:0;}
+.fx-field{flex:1;}
+.fx-field-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dust);margin-bottom:2px;}
+.fx-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:.6rem .7rem;font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:500;color:var(--ink);background:var(--light);}
+.fx-input:focus{outline:none;border-color:var(--rust);}
+.fx-swap{text-align:center;color:var(--dust);font-size:1.1rem;margin:.2rem 0;}
+.fx-quick-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dust);margin:1.2rem 0 .6rem;}
+.fx-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.fx-quick-card{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:.6rem .8rem;}
+.fx-quick-peso{font-size:13px;color:var(--dust);}
+.fx-quick-real{font-size:1rem;font-weight:600;color:var(--ink);}
+.fx-note{font-size:12px;color:var(--dust);line-height:1.6;margin-top:1.2rem;padding:.9rem 1rem;background:var(--paper);border-radius:10px;border-left:3px solid var(--gold);}
+.fx-note strong{color:#7A4A08;}
 </style>
 </head>
 <body>
@@ -463,7 +487,7 @@ a.tel:hover { text-decoration: underline; }
   <p class="header-sub">26 de agosto — 31 de agosto de 2025 · Casal · AirBnb em Palermo Viejo · Fray Justo Sta. María de Oro 2576</p>
   <div class="header-meta">
     <span class="meta-pill">5 dias</span>
-    <span class="meta-pill">Aeroparque</span>
+    <span class="meta-pill">Ezeiza</span>
     <span class="meta-pill">AirBnb: Fray Justo Sta. María de Oro 2576</span>
     <span class="meta-pill">Palermo · Recoleta · Centro · San Telmo</span>
   </div>
@@ -495,6 +519,11 @@ a.tel:hover { text-decoration: underline; }
       <span class="day-tab-weekday">Dom</span>
       <span class="day-tab-num">31</span>
       <span class="day-tab-label">San Telmo</span>
+    </a>
+    <a class="day-tab" onclick="showDay('cambio', this)" href="#">
+      <span class="day-tab-weekday">💱</span>
+      <span class="day-tab-num" style="font-size:1rem;line-height:1.8">Câmbio</span>
+      <span class="day-tab-label">Peso → Real</span>
     </a>
     <a class="day-tab" onclick="showDay('livros', this)" href="#">
       <span class="day-tab-weekday">📚</span>
@@ -535,7 +564,7 @@ a.tel:hover { text-decoration: underline; }
 <div class="dist-row"><span class="dist-lbl">Jardim Botânico (âncora)</span><span class="dist-val"><span class="b-walk">850m · 11 min a pé</span></span></div>
 <div class="dist-row"><span class="dist-lbl">Rita Specialty Coffee</span><span class="dist-val"><span class="b-walk">1,8km · 22 min a pé</span></span></div>
 <div class="dist-row"><span class="dist-lbl">Coto supermercado</span><span class="dist-val"><span class="b-walk">900m · 12 min a pé</span></span></div>
-<div class="dist-row"><span class="dist-lbl">Aeroparque → AirBnb</span><span class="dist-val"><span class="b-car">4km · ~12 min Cabify</span></span></div>
+<div class="dist-row"><span class="dist-lbl">Ezeiza → AirBnb</span><span class="dist-val"><span class="b-car">35km · ~45–60 min Cabify</span></span></div>
     </div>
   </div>
   <div class="legend">
@@ -551,8 +580,8 @@ a.tel:hover { text-decoration: underline; }
       <div class="tl-dot transit"></div>
       <div class="tl-transit">
         <span class="tl-transit-icon">✈️</span>
-        <span class="tl-transit-desc">Aeroparque Jorge Newbery → Cabify para o hotel em Palermo</span>
-        <span class="tl-transit-time">~15–20 min</span>
+        <span class="tl-transit-desc">Ezeiza (Aeroporto Ministro Pistarini) → Cabify ou transfer para o hotel em Palermo</span>
+        <span class="tl-transit-time">~45–60 min</span>
       </div>
     </div>
 
@@ -665,20 +694,32 @@ a.tel:hover { text-decoration: underline; }
           <div class="card-title">Jantar — decidir no dia</div>
           <span class="card-time">~20h</span>
         </div>
-        <div class="card-addr">Palermo · sem reserva necessária</div>
-        <div class="card-body">Duas referências próximas, sem formalidade de reserva:</div>
+        <div class="card-addr">Palermo · escolha principal + alternativas</div>
+        <div class="card-body">Chegando de Ezeiza, o jantar pode ser sem formalidade. A escolha principal é o Hierro Parrilla — as três alternativas ficam todas em Palermo.</div>
         <div class="options-grid">
           <div class="option-card">
-            <div class="option-letter">Opção A</div>
+            <div class="option-letter">★ Principal</div>
             <div class="option-name">Hierro Parrilla ⭐ 4,7</div>
             <div class="option-addr">Costa Rica 5602 · Palermo Hollywood</div>
-            <div class="option-desc">Casual mas sério no que faz. Ribeye, bife de chorizo, chimichurri. WhatsApp: +54 11 2875-6355</div>
+            <div class="option-desc">Casual mas sério no que faz. Ribeye, bife de chorizo, chimichurri. Ótima combinação de qualidade, atmosfera e preço para uma primeira noite. WhatsApp: +54 11 2875-6355</div>
           </div>
           <div class="option-card">
-            <div class="option-letter">Opção B</div>
+            <div class="option-letter">Alternativa A</div>
             <div class="option-name">La Cabrera ⭐ 4,4</div>
             <div class="option-addr">Cabrera 5127 · Palermo Hollywood</div>
-            <div class="option-desc">Happy hour com 40% de desconto a partir das 18h. Chegar cedo e colocar o nome na lista. Jantar até meia-noite.</div>
+            <div class="option-desc">Uma das parrillas mais famosas de BA — posto 64 no ranking mundial. Happy hour com 40% de desconto a partir das 18h. Chegar cedo, colocar o nome na lista, espumante e empanadas de cortesia na espera.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-letter">Alternativa B</div>
+            <div class="option-name">La Dorita ⭐ 4,3</div>
+            <div class="option-addr">Humboldt 1892 · Palermo Hollywood</div>
+            <div class="option-desc">Parrilla de bairro muito popular, sem pretensão e com ótimo custo-benefício. Asado de tira, empanadas, provoleta. Abre todos os dias, ambiente animado. Boa para uma primeira noite descontraída.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-letter">Alternativa C</div>
+            <div class="option-name">Minga Parrilla ⭐ 4,6</div>
+            <div class="option-addr">Costa Rica 4528 · Palermo Soho</div>
+            <div class="option-desc">A mesma do jantar de encerramento (domingo) — nota alta, lomo "a punto" excelente, carta de vinhos curada. A 600m do AirBnb. Se preferirem conhecê-la logo no primeiro dia, funciona igualmente bem.</div>
           </div>
         </div>
       </div>
@@ -687,7 +728,7 @@ a.tel:hover { text-decoration: underline; }
   </div><!-- /timeline -->
 
   <div class="day-summary">
-    <div class="sum-item"><div class="sum-label">Chegada</div><div class="sum-value">Aeroparque</div></div>
+    <div class="sum-item"><div class="sum-label">Chegada</div><div class="sum-value">Ezeiza</div></div>
     <div class="sum-item"><div class="sum-label">Ritmo</div><div class="sum-value">Leve</div></div>
     <div class="sum-item"><div class="sum-label">Botânico</div><div class="sum-value">Gratuito</div></div>
     <div class="sum-item"><div class="sum-label">Reservas</div><div class="sum-value">Nenhuma</div></div>
@@ -1762,6 +1803,53 @@ a.tel:hover { text-decoration: underline; }
   </div>
 </section>
 
+<!-- ══════════════ CÂMBIO ══════════════ -->
+<section class="day-section" id="day-cambio">
+  <div class="day-header-block">
+    <div class="day-date">Ferramenta</div>
+    <h2 class="day-title">Câmbio · Peso → Real</h2>
+    <p class="day-tagline">Conversor com cotação ao vivo · atualiza ao abrir a aba</p>
+  </div>
+
+  <div class="fx-wrap">
+    <div class="fx-rate-card">
+      <div class="fx-rate-label">Cotação atual</div>
+      <div class="fx-rate-value" id="fxRateValue">1 ARS = R$ 0,0035</div>
+      <div class="fx-rate-sub" id="fxRateInverse">R$ 1 = 286 ARS</div>
+      <div class="fx-rate-status" id="fxStatus">Buscando cotação ao vivo…</div>
+    </div>
+
+    <div class="fx-conv">
+      <div class="fx-row">
+        <span class="fx-flag">🇦🇷</span>
+        <div class="fx-field">
+          <div class="fx-field-label">Pesos argentinos (ARS)</div>
+          <input class="fx-input" id="fxPeso" type="number" inputmode="decimal" value="10000" />
+        </div>
+      </div>
+      <div class="fx-swap">↓</div>
+      <div class="fx-row">
+        <span class="fx-flag">🇧🇷</span>
+        <div class="fx-field">
+          <div class="fx-field-label">Reais (BRL)</div>
+          <input class="fx-input" id="fxReal" type="number" inputmode="decimal" value="35" />
+        </div>
+      </div>
+    </div>
+
+    <div class="fx-quick-label">Referência rápida</div>
+    <div class="fx-quick-grid" id="fxQuickGrid">
+      <!-- preenchido via JS -->
+    </div>
+
+    <div class="fx-note">
+      <strong>Como funciona:</strong> a cotação é buscada ao vivo quando você abre esta aba (precisa de internet nesse momento). Se estiver offline, usa a última taxa conhecida (~R$ 0,0035 por peso, agosto/2025). Digite em qualquer um dos campos — o outro se ajusta automaticamente.
+      <br><br>
+      <strong>Dica prática:</strong> na Argentina, prefira pagar em pesos ou com cartão que use o câmbio oficial. A cotação do peso oscila muito — vale conferir aqui de tempos em tempos durante a viagem.
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ LIVRARIAS E SEBOS ══════════════ -->
 <section class="day-section" id="day-livros">
   <div class="day-header-block">
@@ -2761,8 +2849,83 @@ function showDay(dayId, tab) {
   document.getElementById('day-' + dayId).classList.add('active');
   tab.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (dayId === 'cambio') fetchRate();
   return false;
 }
+
+/* ── CÂMBIO ── */
+var FX_RATE = 0.0035; // fallback ARS→BRL (ago/2025)
+var fxLoaded = false;
+
+function fmtBRL(v) {
+  return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmtRate(v) {
+  return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+}
+
+function renderRate(live) {
+  var rv = document.getElementById('fxRateValue');
+  var ri = document.getElementById('fxRateInverse');
+  var st = document.getElementById('fxStatus');
+  if (rv) rv.textContent = '1 ARS = ' + fmtRate(FX_RATE);
+  if (ri) ri.textContent = 'R$ 1 = ' + Math.round(1 / FX_RATE).toLocaleString('pt-BR') + ' ARS';
+  if (st) {
+    if (live) {
+      var now = new Date();
+      st.textContent = 'Cotação ao vivo · ' + now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+      st.style.background = 'rgba(74,103,65,0.35)';
+    } else {
+      st.textContent = 'Última taxa conhecida (offline) · ~ago/2025';
+      st.style.background = 'rgba(196,154,60,0.3)';
+    }
+  }
+  renderQuick();
+  // recalcula a partir do campo peso
+  var p = parseFloat(document.getElementById('fxPeso').value) || 0;
+  document.getElementById('fxReal').value = (p * FX_RATE).toFixed(2);
+}
+
+function renderQuick() {
+  var grid = document.getElementById('fxQuickGrid');
+  if (!grid) return;
+  var vals = [1000, 5000, 10000, 25000, 50000, 100000];
+  grid.innerHTML = vals.map(function(v){
+    return '<div class="fx-quick-card"><div class="fx-quick-peso">' + v.toLocaleString('pt-BR') + ' ARS</div><div class="fx-quick-real">' + fmtBRL(v * FX_RATE) + '</div></div>';
+  }).join('');
+}
+
+function fetchRate() {
+  if (fxLoaded) return;
+  renderRate(false);
+  fetch('https://open.er-api.com/v6/latest/ARS')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && d.rates && d.rates.BRL) {
+        FX_RATE = d.rates.BRL;
+        fxLoaded = true;
+        renderRate(true);
+      }
+    })
+    .catch(function(){
+      // mantém fallback e status offline
+      renderRate(false);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  var peso = document.getElementById('fxPeso');
+  var real = document.getElementById('fxReal');
+  if (peso) peso.addEventListener('input', function(){
+    var p = parseFloat(peso.value) || 0;
+    real.value = (p * FX_RATE).toFixed(2);
+  });
+  if (real) real.addEventListener('input', function(){
+    var r = parseFloat(real.value) || 0;
+    peso.value = (r / FX_RATE).toFixed(0);
+  });
+  renderQuick();
+});
 </script>
 
 </body>
