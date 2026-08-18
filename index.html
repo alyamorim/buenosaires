@@ -580,7 +580,7 @@ a.tel:hover { text-decoration: underline; }
     <a class="day-tab" onclick="showDay('cambio', this)" href="#">
       <span class="day-tab-weekday">💱</span>
       <span class="day-tab-num" style="font-size:1rem;line-height:1.8">Câmbio</span>
-      <span class="day-tab-label">Peso → Real</span>
+      <span class="day-tab-label">Peso · Real · Dólar</span>
     </a>
     <a class="day-tab" onclick="showDay('livros', this)" href="#">
       <span class="day-tab-weekday">📚</span>
@@ -1892,15 +1892,15 @@ a.tel:hover { text-decoration: underline; }
 <section class="day-section" id="day-cambio">
   <div class="day-header-block">
     <div class="day-date">Ferramenta</div>
-    <h2 class="day-title">Câmbio · Peso → Real</h2>
+    <h2 class="day-title">Câmbio · Peso, Real e Dólar</h2>
     <p class="day-tagline">Conversor com cotação ao vivo · atualiza ao abrir a aba</p>
   </div>
 
   <div class="fx-wrap">
     <div class="fx-rate-card">
-      <div class="fx-rate-label">Cotação atual</div>
-      <div class="fx-rate-value" id="fxRateValue">1 ARS = R$ 0,0035</div>
-      <div class="fx-rate-sub" id="fxRateInverse">R$ 1 = 286 ARS</div>
+      <div class="fx-rate-label">Cotação atual · 1.000 ARS</div>
+      <div class="fx-rate-value" id="fxRateValue">R$ 3,50 · US$ 0,77</div>
+      <div class="fx-rate-sub" id="fxRateInverse">R$ 1 = 286 ARS · US$ 1 = 1.300 ARS</div>
       <div class="fx-rate-status" id="fxStatus">Buscando cotação ao vivo…</div>
     </div>
 
@@ -1920,6 +1920,13 @@ a.tel:hover { text-decoration: underline; }
           <input class="fx-input" id="fxReal" type="number" inputmode="decimal" value="35" />
         </div>
       </div>
+      <div class="fx-row">
+        <span class="fx-flag">🇺🇸</span>
+        <div class="fx-field">
+          <div class="fx-field-label">Dólares (USD)</div>
+          <input class="fx-input" id="fxUsd" type="number" inputmode="decimal" value="7.70" />
+        </div>
+      </div>
     </div>
 
     <div class="fx-quick-label">Referência rápida</div>
@@ -1928,9 +1935,9 @@ a.tel:hover { text-decoration: underline; }
     </div>
 
     <div class="fx-note">
-      <strong>Como funciona:</strong> a cotação é buscada ao vivo quando você abre esta aba (precisa de internet nesse momento). Se estiver offline, usa a última taxa conhecida (~R$ 0,0035 por peso, agosto/2025). Digite em qualquer um dos campos — o outro se ajusta automaticamente.
+      <strong>Como funciona:</strong> as cotações são buscadas ao vivo quando você abre esta aba (precisa de internet nesse momento). Se estiver offline, usa as últimas taxas conhecidas (~R$ 0,0035 e ~US$ 0,00077 por peso, agosto/2025). Digite em qualquer um dos três campos — os outros se ajustam automaticamente.
       <br><br>
-      <strong>Dica prática:</strong> na Argentina, prefira pagar em pesos ou com cartão que use o câmbio oficial. A cotação do peso oscila muito — vale conferir aqui de tempos em tempos durante a viagem.
+      <strong>Dica prática:</strong> na Argentina, prefira pagar em pesos ou com cartão que use o câmbio oficial. A cotação do peso oscila muito — vale conferir aqui de tempos em tempos durante a viagem. O dólar é útil como referência porque muitos preços turísticos (hotéis, passeios) são cotados nele.
     </div>
   </div>
 </section>
@@ -2939,36 +2946,39 @@ function showDay(dayId, tab) {
 }
 
 /* ── CÂMBIO ── */
-var FX_RATE = 0.0035; // fallback ARS→BRL (ago/2025)
+var FX_RATE = 0.0035;     // fallback ARS→BRL (ago/2025)
+var FX_USD = 0.00077;     // fallback ARS→USD (ago/2025)
 var fxLoaded = false;
 
 function fmtBRL(v) {
   return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
-function fmtRate(v) {
-  return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+function fmtUSD(v) {
+  return 'US$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function renderRate(live) {
   var rv = document.getElementById('fxRateValue');
   var ri = document.getElementById('fxRateInverse');
   var st = document.getElementById('fxStatus');
-  if (rv) rv.textContent = '1 ARS = ' + fmtRate(FX_RATE);
-  if (ri) ri.textContent = 'R$ 1 = ' + Math.round(1 / FX_RATE).toLocaleString('pt-BR') + ' ARS';
+  // mostra o valor de 1.000 ARS nas duas moedas (mais legível que 0,0035)
+  if (rv) rv.textContent = fmtBRL(1000 * FX_RATE) + ' · ' + fmtUSD(1000 * FX_USD);
+  if (ri) ri.textContent = 'R$ 1 = ' + Math.round(1 / FX_RATE).toLocaleString('pt-BR') + ' ARS · US$ 1 = ' + Math.round(1 / FX_USD).toLocaleString('pt-BR') + ' ARS';
   if (st) {
     if (live) {
       var now = new Date();
       st.textContent = 'Cotação ao vivo · ' + now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
-      st.style.background = 'rgba(74,103,65,0.35)';
+      st.style.background = 'rgba(74,144,194,0.4)';
     } else {
-      st.textContent = 'Última taxa conhecida (offline) · ~ago/2025';
-      st.style.background = 'rgba(196,154,60,0.3)';
+      st.textContent = 'Últimas taxas conhecidas (offline) · ~ago/2025';
+      st.style.background = 'rgba(232,162,0,0.32)';
     }
   }
   renderQuick();
   // recalcula a partir do campo peso
   var p = parseFloat(document.getElementById('fxPeso').value) || 0;
   document.getElementById('fxReal').value = (p * FX_RATE).toFixed(2);
+  document.getElementById('fxUsd').value = (p * FX_USD).toFixed(2);
 }
 
 function renderQuick() {
@@ -2976,7 +2986,7 @@ function renderQuick() {
   if (!grid) return;
   var vals = [1000, 5000, 10000, 25000, 50000, 100000];
   grid.innerHTML = vals.map(function(v){
-    return '<div class="fx-quick-card"><div class="fx-quick-peso">' + v.toLocaleString('pt-BR') + ' ARS</div><div class="fx-quick-real">' + fmtBRL(v * FX_RATE) + '</div></div>';
+    return '<div class="fx-quick-card"><div class="fx-quick-peso">' + v.toLocaleString('pt-BR') + ' ARS</div><div class="fx-quick-real">' + fmtBRL(v * FX_RATE) + '</div><div class="fx-quick-peso" style="margin-top:2px;">' + fmtUSD(v * FX_USD) + '</div></div>';
   }).join('');
 }
 
@@ -2986,14 +2996,14 @@ function fetchRate() {
   fetch('https://open.er-api.com/v6/latest/ARS')
     .then(function(r){ return r.json(); })
     .then(function(d){
-      if (d && d.rates && d.rates.BRL) {
-        FX_RATE = d.rates.BRL;
+      if (d && d.rates) {
+        if (d.rates.BRL) FX_RATE = d.rates.BRL;
+        if (d.rates.USD) FX_USD = d.rates.USD;
         fxLoaded = true;
         renderRate(true);
       }
     })
     .catch(function(){
-      // mantém fallback e status offline
       renderRate(false);
     });
 }
@@ -3001,13 +3011,24 @@ function fetchRate() {
 document.addEventListener('DOMContentLoaded', function(){
   var peso = document.getElementById('fxPeso');
   var real = document.getElementById('fxReal');
-  if (peso) peso.addEventListener('input', function(){
+  var usd = document.getElementById('fxUsd');
+  function fromPeso(){
     var p = parseFloat(peso.value) || 0;
     real.value = (p * FX_RATE).toFixed(2);
-  });
+    usd.value = (p * FX_USD).toFixed(2);
+  }
+  if (peso) peso.addEventListener('input', fromPeso);
   if (real) real.addEventListener('input', function(){
     var r = parseFloat(real.value) || 0;
-    peso.value = (r / FX_RATE).toFixed(0);
+    var p = r / FX_RATE;
+    peso.value = p.toFixed(0);
+    usd.value = (p * FX_USD).toFixed(2);
+  });
+  if (usd) usd.addEventListener('input', function(){
+    var u = parseFloat(usd.value) || 0;
+    var p = u / FX_USD;
+    peso.value = p.toFixed(0);
+    real.value = (p * FX_RATE).toFixed(2);
   });
   renderQuick();
 });
